@@ -74,7 +74,7 @@ a:visited {
   position: fixed;
   background-color: #fff;
   width: 100%;
-  z-index: 200;
+  z-index: 2;
   top: 3.1rem;
 }
 
@@ -140,12 +140,21 @@ footer {
   width: 100%;
 }
 
+/*1024 px (tablets grandes o laptops pequeños)*/
 @media screen and (max-width: 64em) {
+  .categoria_buscador {
+    display: flex;
+    justify-content: space-between;
+  }
+  .search {
+    width: 12rem;
+  }
   .galeria {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
+/*768 px (tablets en orientación vertical, iPad, pantallas medias)*/
 @media screen and (max-width: 48em) {
   .nav_ul {
     grid-template-columns: repeat(2, 1fr);
@@ -158,22 +167,32 @@ footer {
   .categoria_buscador {
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+    flex-direction: row;
+    align-items: center;
     top: 4.2rem;
+    padding: 1rem;
   }
   .categoria,
   .buscador {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  .buscador form{
     width: 100%;
     display: flex;
+    justify-content: flex-end;
   }
-  .categoria label{
+  .categoria label {
     display: none;
   }
-  .search label{
+  .search label {
     font-size: xx-small;
   }
   .search {
-    width: 11rem;
+    width: 10rem;
+    padding: 0.5rem 1rem;
+    margin: 0;
   }
   .galeria {
     grid-template-columns: repeat(2, 1fr);
@@ -188,6 +207,7 @@ footer {
   }
 }
 
+/*480 px (smartphones, por ejemplo iPhone SE/8, Galaxy S8 en modo vertical)*/
 @media screen and (max-width: 30em) {
   .nav_ul {
     grid-template-columns: repeat(2, 1fr);
@@ -198,7 +218,8 @@ footer {
     height: 1rem;
   }
   .categoria_buscador {
-    top: 4.2rem;
+    top: 4.3rem;
+    gap: 1rem;
   }
   .galeria {
     grid-template-columns: 1fr;
