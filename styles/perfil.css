@@ -74,7 +74,8 @@ a:visited {
   grid-template-columns: 1fr 1fr;
   height: 100vh;
   align-items: start;
-  padding-top: 4rem; /* Ajustalo según tu gusto */
+  padding-top: 4rem;
+  /* Ajustalo según tu gusto */
 
 }
 
@@ -84,7 +85,7 @@ a:visited {
   align-items: center;
   min-height: calc(100vh - 60px);
   padding: 20px;
-  
+
 }
 
 .formulario-contenedor {
@@ -98,7 +99,9 @@ a:visited {
   width: 100%;
 }
 
-.columna,.FormularioContactoGlobal, .MetodoPagoGlobal {
+.columna,
+.FormularioContactoGlobal,
+.MetodoPagoGlobal {
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -109,7 +112,8 @@ a:visited {
   align-items: center;
 }
 
-.FormularioContactoGlobal, .MetodoPagoGlobal {
+.FormularioContactoGlobal,
+.MetodoPagoGlobal {
   padding: 2rem;
   justify-content: center;
 }
@@ -124,7 +128,8 @@ a:visited {
 }
 
 /* 📋 FORMULARIOS */
-.FormularioContacto, .sección-formulario {
+.FormularioContacto,
+.sección-formulario {
   display: flex;
   align-items: center;
   margin-bottom: 1.5rem;
@@ -153,7 +158,9 @@ a:visited {
   flex-shrink: 0;
 }
 
-.sección-formulario input, .sección-formulario p, .e-mail {
+.sección-formulario input,
+.sección-formulario p,
+.e-mail {
   flex-grow: 1;
   font-size: em;
 }
@@ -185,7 +192,8 @@ input[type="number"] {
 }
 
 /* 💳 MÉTODOS DE PAGO */
-.MetodoPagoOpcion, .metodo-pago {
+.MetodoPagoOpcion,
+.metodo-pago {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -196,7 +204,8 @@ input[type="number"] {
   align-items: flex-start;
 }
 
-.metodo-pago > label, .opcion-checkbox label {
+.metodo-pago>label,
+.opcion-checkbox label {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -214,7 +223,7 @@ input[type="number"] {
 }
 
 .codigo-tarjeta {
- max-width: 250px;
+  max-width: 250px;
 }
 
 .opcion-checkbox {
@@ -235,43 +244,43 @@ input[type="number"] {
 }
 
 /* 🔘 BOTONES */
-.Botones, .botones, .footer {
+.botones,
+.footer {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 1.25rem;
   margin-top: 2rem;
   flex-wrap: wrap;
 }
 
-button, .boton, .Botones button {
-  padding: 0.7rem 1.5rem;
+.boton {
+  padding: 10px 20px;
   font-size: 1rem;
   border-radius: 6px;
   cursor: pointer;
-  border: 0.1rem solid transparent;
-
-}
-
-.Botones {
-  display: flex;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.botones button {
-  font-size: 1rem;
-  border-radius: 6px;
-
+  text-decoration: none;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
 }
 
 .boton-guardar {
   background-color: green;
 }
 
+.boton-guardar:hover {
+  background-color: darkgreen;
+}
+
 .boton-cancelar {
   background-color: red;
 }
-a.boton {
+
+.boton-cancelar:hover {
+  background-color: darkred;
+}
+
+.boton-guardar, .botones a{
   color: black;
   text-decoration: none;
 }
@@ -287,18 +296,23 @@ a.boton {
 }
 
 @media (max-width: 768px) {
-  .formulario-contenedor, .ContenedorGeneral {
+
+  .formulario-contenedor,
+  .ContenedorGeneral {
     grid-template-columns: 1fr;
     height: auto;
     padding: 20px;
     gap: 20px;
   }
 
-  .columna-izquierda, .columna-central, .columna-derecha {
+  .columna-izquierda,
+  .columna-central,
+  .columna-derecha {
     width: 100%;
   }
 
-  .FormularioContactoGlobal, .MetodoPagoGlobal {
+  .FormularioContactoGlobal,
+  .MetodoPagoGlobal {
     padding: 1.5rem 1rem;
     border-right: none;
     border-bottom: 1px solid #ccc;
@@ -329,7 +343,8 @@ a.boton {
     width: 100%;
   }
 
-  .metodo-pago, .MetodoPagoOpcion {
+  .metodo-pago,
+  .MetodoPagoOpcion {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -349,7 +364,8 @@ a.boton {
     gap: 10px;
   }
 
-  .Botones, .footer {
+  .Botones,
+  .footer {
     flex-direction: column;
     gap: 10px;
   }
@@ -370,4 +386,3 @@ footer {
   right: 0;
   bottom: 0;
 }
-

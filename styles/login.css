@@ -54,10 +54,6 @@ a {
     text-decoration: none;
 }
 
-a:hover{
-    text-decoration: underline;
-}
-
 .centrar {
     text-align: center;
 }
@@ -74,12 +70,17 @@ a:hover{
     border-radius: 10px;
     cursor: pointer;
     font-size: 1em;
-    display: block; 
+    display: block;
+    color: black;
+    text-decoration: none;
 }
 
 .boton-login {
-    background: #e81b08ad;
-    border: 1px solid #e81b08ad;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    border-radius: 5px;
+    text-align: center;
 }
 
 @media (max-width: 600px) {
