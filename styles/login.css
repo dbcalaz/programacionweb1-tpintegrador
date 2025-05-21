@@ -58,11 +58,6 @@ a {
     text-align: center;
 }
 
-.boton-confirmar {
-    border: 1px solid #439755;
-    background: #439755;
-}
-
 .boton-confirmar,
 .boton-login {
     padding: 6px;
@@ -73,14 +68,25 @@ a {
     display: block;
     color: black;
     text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.boton-confirmar {
+    background-color: #439755;
+}
+
+.boton-confirmar:hover {
+    background-color: darkgreen;
 }
 
 .boton-login {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    border-radius: 5px;
-    text-align: center;
+    background-color: #3B70B0;
+}
+
+.boton-login:hover {
+    background-color: darkblue;
 }
 
 @media (max-width: 600px) {
