@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro de usuario</title>
+  <link rel="stylesheet" href="./perfil.css" />
+</head>
+
+<body>
+
+  <header class="Registrarse">
+    <h1>Registrarse</h1>
+  </header>
+
+  <div class="ContenedorGeneral">
+
+    <!-- Sección izquierda: Formulario de usuario -->
+    <section class="FormularioContactoGlobal">
+      <form action="" method="post">
+
+        <article class="FormularioContacto">
+          <label for="Nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Nombre de usuario" required />
+        </article>
+
+        <article class="FormularioContacto">
+          <label for="Apellido">Apellido</label>
+          <input type="text" id="apellido" name="apellido" placeholder="Ingrese apellido" required />
+        </article>
+
+        <article class="FormularioContacto">
+          <label for="Email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="Ingrese email" required />
+        </article>
+
+        <article class="FormularioContacto">
+          <label for="NombreUsuario">Nombre de usuario</label>
+          <input type="text" id="nombreUsuario" name="nombreUsuario" placeholder="Nombre de usuario" required />
+        </article>
+
+        <article class="FormularioContacto">
+          <label for="Contrasena">Contraseña</label>
+          <input type="password" id="contrasenia" name="contrasenia" placeholder="Contraseña" required />
+        </article>
+
+        <article class="FormularioContacto">
+          <label for="RepetirContrasena">Repetir contraseña</label>
+          <input type="password" id="repetirContrasenia" name="repetirContrasenia" placeholder="Repetir contraseña" required />
+        </article>
+
+      </form>
+    </section>
+
+    <!-- Sección derecha: Métodos de pago -->
+    <section class="MetodoPagoGlobal">
+      <form action="" method="post">
+
+        <p class="seccion-titulo">Método de pago</p>
+
+        <article class="metodo-pago">
+          <label>
+            <input type="radio" name="metodoPago" value="tarjeta" />
+            Tarjeta de crédito
+          </label>
+          <div class="datos-tarjeta">
+            <input type="number" name="numeroTarjeta" class="datos-tarjeta" id="numeroTarjeta" placeholder="Número de tarjeta" />
+            <input type="number" class="datos-tarjeta" name="Codigo" placeholder="XXX" />
+          </div>
+
+        </article>
+
+        <article class="metodo-pago">
+          <label><input type="radio" name="metodoPago" id="cuponPago" value="cupon" /> Cupón de pago</label>
+          <div class="opcion-checkbox">
+            <label><input type="checkbox" checked /> Pago fácil</label>
+            <label><input type="checkbox" /> RapiPago</label>
+          </div>
+        </article>
+
+        <article class="metodo-pago">
+          <label>
+            <input type="radio" name="metodoPago" id="transferenciaBancaria" value="transferencia" />
+            Transferencia bancaria
+          </label>
+          <p class="cbu">CBU: 0000003100055994120766</p>
+        </article>
+
+        <div class="Botones">
+          <button class="boton-guardar" type="submit" name="botonConfirmar">Confirmar</button>
+          <button class="boton-cancelar" type="submit" name="botonCancelar">Cancelar</button>
+        </div>
+
+      </form>
+    </section>
+
+  </div>
+
+  <footer>
+    Programación Web 1 - Grupo 7: Calaz, Daniela Belén - Casanova, Rocio Luján - Córdoba, Agustina - Sidero, Celeste
+  </footer>
+
+</body>
+</html>
