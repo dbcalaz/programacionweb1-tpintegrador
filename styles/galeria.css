@@ -145,6 +145,7 @@ footer {
   .categoria_buscador {
     display: flex;
     justify-content: space-between;
+    top:6.2rem
   }
   .search {
     width: 12rem;
@@ -169,7 +170,7 @@ footer {
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
-    top: 4.2rem;
+    top: 6.25rem;
     padding: 1rem;
   }
   .categoria,
@@ -218,7 +219,7 @@ footer {
     height: 1rem;
   }
   .categoria_buscador {
-    top: 4.3rem;
+    top: 5.25rem;
     gap: 1rem;
   }
   .galeria {

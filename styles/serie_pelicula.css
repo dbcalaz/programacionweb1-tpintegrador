@@ -84,8 +84,8 @@ p {
 }
 
 .info_similares img {
-  width: 90%;
-  height: 20rem;
+  width: 100%;
+  height: auto;
 }
 
 .nav {
