@@ -295,7 +295,22 @@ input[type="number"] {
   margin-top: 10px;
 }
 
+footer {
+  background-color: #e6e6e6;
+  text-align: center;
+  width: 100%;
+  padding: 1em;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 @media (max-width: 768px) {
+
+  .nav_ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   .formulario-contenedor,
   .ContenedorGeneral {
@@ -303,6 +318,10 @@ input[type="number"] {
     height: auto;
     padding: 20px;
     gap: 20px;
+  }
+
+  .columna-izquierda img {
+    margin-top: 5rem;
   }
 
   .columna-izquierda,
@@ -364,25 +383,20 @@ input[type="number"] {
     gap: 10px;
   }
 
-  .Botones,
-  .footer {
+  .botones{
     flex-direction: column;
     gap: 10px;
+    margin: 1.875rem;
   }
 
-  .boton,
-  button {
+  .boton {
     width: 100%;
   }
-}
-
-footer {
-  background-color: #e6e6e6;
-  text-align: center;
-  width: 100%;
-  padding: 1em;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  
+   footer {
+    padding-bottom: 1rem;
+    padding-top: 0.5rem;
+    width: 100%;
+    font-size: small;
+  }
 }

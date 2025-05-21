@@ -22,24 +22,31 @@ form {
 }
 
 label {
-    padding: 6px;
-    margin: 0 5px;
+  padding: 6px;
+  margin: 0 5px;
+  display: block;
+  color: #eee;
 }
 
 input {
-    background: transparent;
-    border: 1px solid #666;
-    border-radius: 10px;
-    margin: 6px 0;
-    padding: 10px;
-    color: #eee;
+  background: transparent;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #eee;
+  width: 300px;
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 1rem;
+  display: block;
 }
 
+
+
 .botones {
-    display: flex; 
-    justify-content: space-between; 
-    gap: 10px; 
-    flex-wrap: wrap; 
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 img {
@@ -55,14 +62,15 @@ a {
 }
 
 
-a:hover{
+a:hover {
     text-decoration: underline;
 }
 
 .centrar {
     text-align: center;
 }
-.covertir{
+
+.covertir {
     display: block;
 }
 
@@ -108,11 +116,11 @@ a:hover{
     }
 
     input {
-        width: 100%;
+        width: auto;
     }
 
     .boton-login,
     .boton-confirmar {
-        width: 100%;
+        width: auto;
     }
 }
