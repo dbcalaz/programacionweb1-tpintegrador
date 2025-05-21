@@ -8,89 +8,90 @@
     <link rel="stylesheet" href="./styles/serie_pelicula.css">
 </head>
 
-
 <body>
     <header>
         <nav class="nav">
             <ul class="nav_ul">
                 <li class="puntero"> <a href="./galeria.html"><img src="./images/home.png" alt="home">Home</a></li>
-                <li class="activo"> <a href="./serie.html"><img src="./images/PeliSerie.png" alt="serie"> Series</a></li>
-                <li class="puntero"> <a href="./pelicula.html"><img src="./images/PeliSerie.png" alt="pelicula"> Películas</a></li>
-                <li class="puntero"> <a href=""><img src="./images/perfil.png" alt="perfil"> Perfil</a></li> <!--Falta poner el PERFIL-->
+                <li class="activo"> <a href="./serie.html"><img src="./images/PeliSerie.png" alt="serie"> Series</a>
+                </li>
+                <li class="puntero"> <a href="./pelicula.html"><img src="./images/PeliSerie.png" alt="pelicula">
+                        Películas</a></li>
+                <li class="puntero"> <a href=""><img src="./images/perfil.png" alt="perfil"> Perfil</a></li>
+                <!--Falta poner el PERFIL-->
             </ul>
         </nav>
     </header>
 
-    <section class="info">
-        <div class="info_contenido">
-            <div class="video">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/ykLTd5aTa88?si=TtztohobmQxOctYO"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                <a href="https://www.youtube.com/watch?v=ykLTd5aTa88" target="_blank">
-                    <button class="boton">Comenzar</button>
-                </a>
+    <main>
+        <section class="info">
+            <div class="info_contenido">
+                <div class="video">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/ykLTd5aTa88?si=TtztohobmQxOctYO"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <a href="https://www.youtube.com/watch?v=ykLTd5aTa88" target="_blank">
+                        <button class="boton">Comenzar</button>
+                    </a>
+                </div>
+                <div class="info_descripcion">
+                    <div class="info_linea">
+                        <h3>Título:</h3>
+                        <p>El Eternauta</p>
+                    </div>
+                    <div class="info_linea">
+                        <h3>Temporadas:</h3>
+                        <select name="Temporadas" id="Temporadas">
+                            <option value="">Seleccionar</option>
+                            <option value="Temporada1">Temporada 1</option>
+                        </select>
+                        <h3>Capitulos: </h3>
+                        <select name="Capitulo" id="Capitulo">
+                            <option value="">Capitulo</option>
+                            <option value="Capitulo1">Capitulo 1</option>
+                            <option value="Capitulo2">Capitulo 2</option>
+                            <option value="Capitulo3">Capitulo 3</option>
+                            <option value="Capitulo4">Capitulo 4</option>
+                            <option value="Capitulo5">Capitulo 5</option>
+                            <option value="Capitulo6">Capitulo 6</option>
+                        </select>
+                    </div>
+                    <div class="info_linea">
+                        <h3>Género:</h3>
+                        <p>Ciencia Ficción</p>
+                    </div>
+                    <div class="info_linea">
+                        <h3>Actores:</h3>
+                        <p><a href="https://es.wikipedia.org/wiki/Ricardo_Dar%C3%ADn" target="_blank">Ricardo Darín</a>,
+                            <a href="https://es.wikipedia.org/wiki/Carla_Peterson" target="_blank">Carla Peterson</a>,
+                            <a href="https://es.wikipedia.org/wiki/C%C3%A9sar_Troncoso" target="_blank">César
+                                Troncoso</a>,
+                            <a href="https://es.wikipedia.org/wiki/Andrea_Pietra" target="_blank">
+                                Andrea Pietra</a>, <a href="https://es.wikipedia.org/wiki/Ariel_Staltari"
+                                target="_blank">Ariel Staltari</a>, <a
+                                href="https://es.wikipedia.org/wiki/Marcelo_Subiotto" target="_blank">
+                                Marcelo Subiotto</a>
+                        </p>
+                    </div>
+                    <p>La serie El Eternauta, basada en la célebre historieta de Oesterheld y Solano López, narra la
+                        historia de Juan Salvo y su familia, quienes sobreviven a una nevada masiva en Buenos Aires que
+                        aniquila a gran parte de la población. Descubren que la nieve es solo el primer paso de una
+                        invasión
+                        extraterrestre y deben luchar por sobrevivir y resistir a los invasores</p>
+                </div>
             </div>
-            <div class="info_descripcion">
-                <div class="info_linea">
-                    <h3>Título:</h3>
-                    <p>El Eternauta</p>
-                </div>
-                <div class="info_linea">
-                    <h3>Temporadas:</h3>
-                    <select name="Temporadas" id="Temporadas">
-                        <option value="">Seleccionar</option>
-                        <option value="Temporada1">Temporada 1</option>
-                    </select>
-                    <h3>Capitulos: </h3>
-                    <select name="Capitulo" id="Capitulo">
-                        <option value="">Capitulo</option>
-                        <option value="Capitulo1">Capitulo 1</option>
-                        <option value="Capitulo2">Capitulo 2</option>
-                        <option value="Capitulo3">Capitulo 3</option>
-                        <option value="Capitulo4">Capitulo 4</option>
-                        <option value="Capitulo5">Capitulo 5</option>
-                        <option value="Capitulo6">Capitulo 6</option>
-                    </select>
-                </div>
-                <div class="info_linea">
-                    <h3>Género:</h3>
-                    <p>Ciencia Ficción</p>
-                </div>
-                <div class="info_linea">
-                    <h3>Actores:</h3>
-                    <p><a href="https://es.wikipedia.org/wiki/Ricardo_Dar%C3%ADn" target="_blank">Ricardo Darín</a>, <a
-                            href="https://es.wikipedia.org/wiki/Carla_Peterson" target="_blank">Carla Peterson</a>,
-                        <a href="https://es.wikipedia.org/wiki/C%C3%A9sar_Troncoso" target="_blank">César Troncoso</a>,
-                        <a href="https://es.wikipedia.org/wiki/Andrea_Pietra" target="_blank">
-                            Andrea Pietra</a>, <a href="https://es.wikipedia.org/wiki/Ariel_Staltari"
-                            target="_blank">Ariel Staltari</a>, <a href="https://es.wikipedia.org/wiki/Marcelo_Subiotto"
-                            target="_blank">
-                            Marcelo Subiotto</a>
-                    </p>
-                </div>
-                <p>La serie El Eternauta, basada en la célebre historieta de Oesterheld y Solano López, narra la
-                    historia de Juan Salvo y su familia, quienes sobreviven a una nevada masiva en Buenos Aires que
-                    aniquila a gran parte de la población. Descubren que la nieve es solo el primer paso de una invasión
-                    extraterrestre y deben luchar por sobrevivir y resistir a los invasores</p>
+        </section>
+        <section class="info_similares_contenido">
+            <h2>Similares</h2>
+            <div class="info_similares">
+                <a href="./serie.html" target="_blank"><img src="./images/breakingBad.webp" alt="breakingBad"></a>
+                <a href="./serie.html" target="_blank"><img src="./images/saul.jpg" alt="Better Call Saul"></a>
+                <a href="./serie.html" target="_blank"><img src="./images/grey.webp" alt="Greys Anatomy"></a>
+                <a href="./serie.html" target="_blank"><img src="./images/simpsons.webp" alt="Los Simpsons"></a>
             </div>
-        </div>
-    </section>
-    <section class="info_similares_contenido">
-        <h2>Similares</h2>
-        <div class="info_similares">
-            <a href="./serie.html" target="_blank"><img src="./images/breakingBad.webp"
-                    alt="breakingBad"></a>
-            <a href="./serie.html" target="_blank"><img src="./images/saul.jpg"
-                    alt="Better Call Saul"></a>
-            <a href="./serie.html" target="_blank"><img src="./images/grey.webp"
-                    alt="Greys Anatomy"></a>
-            <a href="./serie.html" target="_blank"><img
-                    src="./images/simpsons.webp" alt="Los Simpsons"></a>
-        </div>
-    </section>
-
+        </section>
+    </main>
     <footer>
         Programacion Web 1 - Grupo 7: Calaz, Daniela Belén - Casanova, Rocio Luján - Córdoba, Agustina - Sidero, Celeste
     </footer>
