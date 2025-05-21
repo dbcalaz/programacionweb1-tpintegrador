@@ -62,6 +62,9 @@ a:hover{
 .centrar {
     text-align: center;
 }
+.covertir{
+    display: block;
+}
 
 .boton-confirmar {
     border: 1px solid #439755;
