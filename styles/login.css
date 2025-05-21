@@ -70,8 +70,9 @@ a:hover {
     text-align: center;
 }
 
-.covertir {
+.convertir a {
     display: block;
+    margin-bottom: 0.5em;
 }
 
 .boton-confirmar,
