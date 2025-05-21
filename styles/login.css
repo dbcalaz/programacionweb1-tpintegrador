@@ -62,8 +62,9 @@ a:hover{
 .centrar {
     text-align: center;
 }
-.covertir{
+.convertir{
     display: block;
+    margin-bottom: 0.5em;
 }
 
 .boton-confirmar,
