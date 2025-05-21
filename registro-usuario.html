@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Registro de usuario</title>
-  <link rel="stylesheet" href="./perfil.css" />
+  <link rel="stylesheet" href="./styles/perfil.css" />
 </head>
 
 <body>
@@ -17,7 +18,7 @@
 
     <!-- Sección izquierda: Formulario de usuario -->
     <section class="FormularioContactoGlobal">
-      <form action="" method="post">
+      <form action="./login" method="post">
 
         <article class="FormularioContacto">
           <label for="Nombre">Nombre</label>
@@ -46,7 +47,8 @@
 
         <article class="FormularioContacto">
           <label for="RepetirContrasena">Repetir contraseña</label>
-          <input type="password" id="repetirContrasenia" name="repetirContrasenia" placeholder="Repetir contraseña" required />
+          <input type="password" id="repetirContrasenia" name="repetirContrasenia" placeholder="Repetir contraseña"
+            required />
         </article>
 
       </form>
@@ -54,7 +56,7 @@
 
     <!-- Sección derecha: Métodos de pago -->
     <section class="MetodoPagoGlobal">
-      <form action="" method="post">
+      <form action="./login" method="post">
 
         <p class="seccion-titulo">Método de pago</p>
 
@@ -64,7 +66,8 @@
             Tarjeta de crédito
           </label>
           <div class="datos-tarjeta">
-            <input type="number" name="numeroTarjeta" class="datos-tarjeta" id="numeroTarjeta" placeholder="Número de tarjeta" />
+            <input type="number" name="numeroTarjeta" class="datos-tarjeta" id="numeroTarjeta"
+              placeholder="Número de tarjeta" />
             <input type="number" class="datos-tarjeta" name="Codigo" placeholder="XXX" />
           </div>
 
@@ -87,8 +90,12 @@
         </article>
 
         <div class="Botones">
-          <button class="boton-guardar" type="submit" name="botonConfirmar">Confirmar</button>
-          <button class="boton-cancelar" type="submit" name="botonCancelar">Cancelar</button>
+          <a href="./login.html">
+            <button class="boton-guardar" type="submit" name="botonConfirmar">Confirmar</button>
+          </a>
+          <a href="./login.html">
+            <button class="boton-cancelar" type="submit" name="botonCancelar">Cancelar</button>
+          </a>
         </div>
 
       </form>
@@ -99,6 +106,6 @@
   <footer>
     Programación Web 1 - Grupo 7: Calaz, Daniela Belén - Casanova, Rocio Luján - Córdoba, Agustina - Sidero, Celeste
   </footer>
-
 </body>
+
 </html>
