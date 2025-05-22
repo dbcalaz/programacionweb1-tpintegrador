@@ -77,16 +77,14 @@ a:hover {
 
 .boton-confirmar,
 .boton-login {
-    padding: 6px;
-    margin: 10px auto;
+    padding: 0.625rem 1.25rem;
+    margin: 0.625rem auto;
     border-radius: 10px;
     cursor: pointer;
     font-size: 1em;
     display: block;
     color: black;
     text-decoration: none;
-    display: inline-block;
-    padding: 10px 20px;
     text-align: center;
 }
 
@@ -103,7 +101,7 @@ a:hover {
 }
 
 .boton-login:hover {
-    background-color: darkblue;
+    background-color: #26456E;
 }
 
 @media (max-width: 600px) {

@@ -16,12 +16,12 @@
           <a href="./galeria.html"><img class="image_home" src="./images/home.png" alt="home" />Home</a>
         </li>
         <li class="puntero">
-          <a href="./serie.html"
+          <a href="./series.html"
             ><img src="./images/PeliSerie.png" alt="serie" /> Series</a
             >
         </li>
         <li class="puntero">
-          <a href="./pelicula.html"
+          <a href="./peliculas.html"
             ><img src="./images/PeliSerie.png" alt="pelicula" /> Películas</a
           >
         </li>
@@ -34,12 +34,13 @@
 
   <div class="contenedor-principal">
    
-    <form action="./galeria.html" method="post" class="formulario-contenedor">
+    <form action="./galeria.html" method="get" class="formulario-contenedor">
       
       <!-- Perfil de usuario -->
       <section class="columna columna-izquierda">
         <img src="./images/FotoPerfil.png" alt="Foto de perfil" class="foto-perfil" />
         <p class="perfil-usuario">Nombre de usuario</p>
+        <a href="./index.html" class="boton boton-cerrar">Cerrar sesión</a>
       </section>
 
       <!-- Información de cuenta -->
@@ -56,12 +57,12 @@
 
         <article class="sección-formulario">
           <label for="nueva-contrasenia">Nueva contraseña</label>
-          <input id="nueva-contrasenia" name="nueva-contrasenia" type="password" placeholder="Ingrese nueva contraseña" />
+          <input id="nueva-contrasenia" name="nueva-contrasenia" type="password" placeholder="Ingrese nueva contraseña" required/>
         </article>
 
         <article class="sección-formulario">
           <label for="repetir-contrasenia">Repetir contraseña</label>
-          <input id="repetir-contrasenia" name="repetir-contrasenia" type="password" placeholder="Ingrese nueva contraseña" />
+          <input id="repetir-contrasenia" name="repetir-contrasenia" type="password" placeholder="Ingrese nueva contraseña" required/>
         </article>
       </section>
 
@@ -70,15 +71,15 @@
         <p class="seccion-titulo">Método de pago</p>
 
         <article class="metodo-pago">
-          <label><input type="radio" name="metodo-pago" id="tarjeta-credito" /> Tarjeta de crédito</label>
+          <label><input type="radio" name="metodo-pago" id="tarjeta-credito" required/> Tarjeta de crédito</label>
           <div class="datos-tarjeta">
-            <input type="number" placeholder="Número de tarjeta" class="datos-tarjeta" />
-            <input type="number" placeholder="XXX" class="datos-tarjeta" />
+            <input type="number" placeholder="Número de tarjeta" class="datos-tarjeta"/>
+            <input type="number" placeholder="XXX" class="datos-tarjeta"/>
           </div>
         </article>
 
         <article class="metodo-pago">
-          <label><input type="radio" name="metodo-pago" id="cupon-pago" /> Cupón de pago</label>
+          <label><input type="radio" name="metodo-pago" id="cupon-pago" required/> Cupón de pago</label>
           <div class="opcion-checkbox">
             <label><input type="checkbox"/> Pago fácil</label>
             <label><input type="checkbox" /> RapiPago</label>
@@ -86,12 +87,12 @@
         </article>
 
         <article class="metodo-pago">
-          <label><input type="radio" name="metodo-pago" id="transferencia-bancaria" /> Transferencia bancaria</label>
+          <label><input type="radio" name="metodo-pago" id="transferencia-bancaria" required/> Transferencia bancaria</label>
           <p class="cbu">CBU: 2183909411100018971375</p>
         </article>
 
         <section class="botones">
-          <a href="./galeria.html" class="boton boton-guardar">Guardar cambios</a>
+          <button class="boton boton-guardar" type="submit">Guardar cambios</button>
           <a href="./index.html" class="boton boton-cancelar">Cancelar suscripción</a>
         </section>
       </section>

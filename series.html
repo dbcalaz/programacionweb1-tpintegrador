@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página princial</title>
+    <link rel="stylesheet" href="./styles/galeria.css" />
+    <link rel="stylesheet" href="./styles/serie_pelicula.css">
+</head>
+
+<body>
+    <header>
+        <nav class="nav">
+            <ul class="nav_ul">
+                <li class="puntero" >
+                    <a href="./galeria.html"><img class="image_home" src="./images/home.png" alt="home" />Home</a>
+                </li>
+                <li class="activo">
+                    <a href="./series.html"><img src="./images/PeliSerie.png" alt="serie" /> Series</a>
+                </li>
+                <li class="puntero">
+                    <a href="./peliculas.html"><img src="./images/PeliSerie.png" alt="pelicula" /> Películas</a>
+                </li>
+                <li class="puntero">
+                    <a href="./perfil-usuario.html"><img src="./images/perfil.png" alt="perfil" /> Perfil</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+        <section class="categoria_buscador">
+            <article class="categoria">
+                <form class="form_categoria" action="" method="get">
+                    <label for="categoria">Categorías</label>
+                    <select name="categoria" id="categoria">
+                        <option value="vacio">Seleccionar categoría</option>
+                        <option value="accion">Acción</option>
+                        <option value="aventura">Aventura</option>
+                        <option value="ciencia_ficcion">Ciencia Ficción</option>
+                        <option value="comedia">Comedia</option>
+                        <option value="documentales">Documentales</option>
+                        <option value="drama">Drama</option>
+                        <option value="fantasia">Fantasía</option>
+                        <option value="musicales">Musicales</option>
+                        <option value="suspenso">Suspenso</option>
+                        <option value="terror">Terror</option>
+                    </select>
+                </form>
+            </article>
+            <article class="buscador">
+                <form action="" method="get">
+                    <label for="buscador"></label>
+                    <input class="search" type="search" name="buscador" id="buscador" placeholder="Buscar por nombre" />
+                </form>
+            </article>
+        </section>
+
+        <section class="galeria">
+            <a href="./detalleSerie.html"><img src="./images/breakingBad.webp" alt="breakingBad" /></a>
+            <a href="./detalleSerie.html"><img src="./images/eternauta.jpeg" alt="eternauta" /></a>
+            <a href="./detalleSerie.html"><img src="./images/saul.jpg" alt="saul" /></a>
+            <a href="./detalleSerie.html"><img src="./images/grey.webp" alt="grey" /></a>
+            <a href="./detalleSerie.html"><img src="./images/simpsons.webp" alt="simpsons" /></a>
+            <a href="./detalleSerie.html"><img src="./images/breakingBad.webp" alt="breakingBad" /></a>
+            <a href="./detalleSerie.html"><img src="./images/eternauta.jpeg" alt="eternauta" /></a>
+            <a href="./detalleSerie.html"><img src="./images/saul.jpg" alt="saul" /></a>
+            <a href="./detalleSerie.html"><img src="./images/grey.webp" alt="grey" /></a>
+            <a href="./detalleSerie.html"><img src="./images/simpsons.webp" alt="simpsons" /></a>
+            <a href="./detalleSerie.html"><img src="./images/breakingBad.webp" alt="breakingBad" /></a>
+            <a href="./detalleSerie.html"><img src="./images/eternauta.jpeg" alt="eternauta" /></a>
+            <a href="./detalleSerie.html"><img src="./images/saul.jpg" alt="saul" /></a>
+            <a href="./detalleSerie.html"><img src="./images/grey.webp" alt="grey" /></a>
+            <a href="./detalleSerie.html"><img src="./images/simpsons.webp" alt="simpsons" /></a>
+            <a href="./detalleSerie.html"><img src="./images/breakingBad.webp" alt="breakingBad" /></a>
+        </section>
+    </main>
+    <footer>
+        <p>
+            Programación web 1 - Grupo 7: Calaz, Daniela Belén - Casanova, Rocío
+            Luján - Córdoba, Agustina - Sidero, Celeste.
+        </p>
+    </footer>
+</body>
+
+</html>

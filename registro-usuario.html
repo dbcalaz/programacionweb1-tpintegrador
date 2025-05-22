@@ -18,7 +18,7 @@
 
     <!-- Sección izquierda: Formulario de usuario -->
     <section class="FormularioContactoGlobal">
-      <form action="./index.html" method="post">
+      <form action="./index.html" method="get">
 
         <article class="FormularioContacto">
           <label for="Nombre">Nombre</label>
@@ -51,30 +51,28 @@
             required />
         </article>
 
-      </form>
-    </section>
-
-    <!-- Sección derecha: Métodos de pago -->
+      </section>
+      
+      <!-- Sección derecha: Métodos de pago -->
     <section class="MetodoPagoGlobal">
-      <form action="./index.html" method="post">
 
-        <p class="seccion-titulo">Método de pago</p>
+      <p class="seccion-titulo">Método de pago</p>
 
-        <article class="metodo-pago">
-          <label>
-            <input type="radio" name="metodoPago" value="tarjeta" />
-            Tarjeta de crédito
-          </label>
-          <div class="datos-tarjeta">
-            <input type="number" name="numeroTarjeta" class="datos-tarjeta" id="numeroTarjeta"
-              placeholder="Número de tarjeta" />
-            <input type="number" class="datos-tarjeta" name="Codigo" placeholder="XXX" />
-          </div>
+      <article class="metodo-pago">
+        <label>
+          <input type="radio" name="metodoPago" value="tarjeta" required/>
+          Tarjeta de crédito
+        </label>
+        <div class="datos-tarjeta">
+          <input type="number" name="numeroTarjeta" class="datos-tarjeta" id="numeroTarjeta"
+          placeholder="Número de tarjeta" />
+          <input type="number" class="datos-tarjeta" name="Codigo" placeholder="XXX" />
+        </div>
+        
+      </article>
 
-        </article>
-
-        <article class="metodo-pago">
-          <label><input type="radio" name="metodoPago" id="cuponPago" value="cupon" /> Cupón de pago</label>
+      <article class="metodo-pago">
+        <label><input type="radio" name="metodoPago" id="cuponPago" value="cupon" required/> Cupón de pago</label>
           <div class="opcion-checkbox">
             <label><input type="checkbox" checked /> Pago fácil</label>
             <label><input type="checkbox" /> RapiPago</label>
@@ -83,20 +81,19 @@
 
         <article class="metodo-pago">
           <label>
-            <input type="radio" name="metodoPago" id="transferenciaBancaria" value="transferencia" />
+            <input type="radio" name="metodoPago" id="transferenciaBancaria" value="transferencia" required/>
             Transferencia bancaria
           </label>
           <p class="cbu">CBU: 0000003100055994120766</p>
         </article>
-
+        
         <div class="botones">
-          <a href="./index.html" class="boton boton-guardar">Confirmar</a>
+          <button class="boton boton-guardar" type="submit">Confirmar</button>
           <a href="./index.html" class="boton boton-cancelar">Cancelar</a>
         </div>
-
-      </form>
-    </section>
-
+      </section>
+    </form>
+      
   </div>
 
   <footer>

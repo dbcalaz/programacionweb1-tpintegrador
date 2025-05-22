@@ -75,7 +75,6 @@ a:visited {
   height: 100vh;
   align-items: start;
   padding-top: 4rem;
-  /* Ajustalo según tu gusto */
 
 }
 
@@ -127,7 +126,6 @@ a:visited {
   padding: 1rem;
 }
 
-/* 📋 FORMULARIOS */
 .FormularioContacto,
 .sección-formulario {
   display: flex;
@@ -191,7 +189,6 @@ input[type="number"] {
   color: rgb(155, 152, 148);
 }
 
-/* 💳 MÉTODOS DE PAGO */
 .MetodoPagoOpcion,
 .metodo-pago {
   display: flex;
@@ -243,7 +240,6 @@ input[type="number"] {
   margin: 5px 0 0 25px;
 }
 
-/* 🔘 BOTONES */
 .botones,
 .footer {
   display: flex;
@@ -280,7 +276,14 @@ input[type="number"] {
   background-color: darkred;
 }
 
-.boton-guardar, .botones a{
+.boton-cerrar {
+  background-color: #3B70B0;
+}
+
+.boton-cerrar:hover {
+  background-color: #26456E;
+}
+.boton {
   color: black;
   text-decoration: none;
 }
