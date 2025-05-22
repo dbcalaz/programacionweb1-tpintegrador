@@ -256,15 +256,18 @@ input[type="number"] {
   text-decoration: none;
   color: white;
   border: none;
-  transition: background-color 0.3s ease;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .boton-guardar {
   background-color: green;
+  border: none;
 }
 
 .boton-guardar:hover {
   background-color: darkgreen;
+  border: none;
 }
 
 .boton-cancelar {
@@ -282,6 +285,7 @@ input[type="number"] {
 .boton-cerrar:hover {
   background-color: #26456E;
 }
+
 .boton {
   color: black;
   text-decoration: none;
@@ -385,7 +389,7 @@ footer {
     gap: 10px;
   }
 
-  .botones{
+  .botones {
     flex-direction: column;
     gap: 10px;
     margin: 1.875rem;
@@ -394,8 +398,8 @@ footer {
   .boton {
     width: 100%;
   }
-  
-   footer {
+
+  footer {
     padding-bottom: 1rem;
     padding-top: 0.5rem;
     width: 100%;
