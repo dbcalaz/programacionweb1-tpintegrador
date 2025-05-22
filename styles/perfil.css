@@ -153,7 +153,6 @@ a:visited {
 
 .sección-formulario label {
   width: 150px;
-  flex-shrink: 0;
 }
 
 .sección-formulario input,
