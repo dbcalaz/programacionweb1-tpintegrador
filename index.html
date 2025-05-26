@@ -1,37 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./images/faviconP.png">
-    <link rel="stylesheet" href="./styles/login.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./images/faviconP.png" />
+    <link rel="stylesheet" href="./styles/login.css" />
     <title>Login</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <header>
-        <img src="./images/pure.JPG" alt="Logo de PureFlix" title="Logo de PureFlix">
+      <img
+        src="./images/pure.JPG"
+        alt="Logo de PureFlix"
+        title="Logo de PureFlix"
+      />
     </header>
 
     <main>
-        <form action="./galeria.html" method="get">
-            <h1> Ingresa a tu cuenta </h1>
-            <label for="usuario"> Nombre usuario </label>
-            <input type="text" placeholder="Noah204" name="user" required id="usuario">
-            <label for="contraseña"> Contraseña </label>
-            <input type="password" placeholder="MfO9cJW23RSj0" name="password" required id="contraseña">
-            <button class="boton-login" type="submit">Iniciar sesión</button>
-        </form>
+      <form action="./galeria.html" method="get">
+        <h1 class="titulo">Ingresa a tu cuenta</h1>
+        <div class="label_input">
+          <label for="usuario"> Nombre de usuario </label>
+          <input
+            type="text"
+            placeholder="Nombre de usuario"
+            name="user"
+            id="usuario"
+            required
+          />
+        </div>
+        <div class="label_input">
+          <label for="contraseña"> Contraseña </label>
+          <input
+            type="password"
+            placeholder="Contraseña"
+            name="password"
+            id="contraseña"
+            required
+          />
+        </div>
+        <button class="boton-login" type="submit">Iniciar sesión</button>
+      </form>
 
-        <section class="convertir">
-            <a href="./recuperarPassword.html">¿Olvidaste tu contraseña?</a>
-            <br>
-            <a href="./registro-usuario.html"> Registrarse </a>
-        </section>
+      <section class="convertir">
+        <a href="./recuperarPassword.html">¿Olvidaste tu contraseña?</a>
+        <br />
+        <a href="./registro-usuario.html"> Registrarse </a>
+      </section>
     </main>
-
-</body>
-
+  </body>
 </html>

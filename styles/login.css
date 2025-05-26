@@ -6,8 +6,7 @@ body {
 }
 
 form {
-    width: 100%;
-    max-width: 400px;
+    width: 40%;
     padding: 20px;
     margin: 50px auto;
     border-radius: 10px;
@@ -16,23 +15,29 @@ form {
     text-align: center;
 }
 
+.label_input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
 label {
-    padding: 6px;
-    margin: 0 5px;
-    display: block;
+    width: 9rem;
+    text-align: right;
+    margin-right: 4rem;
     color: #eee;
 }
 
-input {
-    background: transparent;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    color: #eee;
-    width: 300px;
-    margin: 0 auto;
-    padding: 10px;
+input{
+    width: 14rem;
+    padding: 0.625rem;
     font-size: 1rem;
-    display: block;
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.3125rem;
+    color: #eee;
+    box-sizing: border-box;
+    background: transparent;
 }
 
 .botones {
@@ -51,7 +56,7 @@ img {
 
 .convertir a {
     display: block;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.2em;
     color: #3B70B0;
     text-decoration: none;
 }
@@ -76,6 +81,7 @@ img {
 .boton-confirmar {
     background-color: #439755;
     border: none;
+    width: 10rem;
 }
 
 .boton-confirmar:hover {
@@ -86,6 +92,8 @@ img {
 .boton-login {
     background-color: #3B70B0;
     border: none;
+    width: 15rem;
+    margin-top: 2rem;
 }
 
 .boton-login:hover {
@@ -96,6 +104,7 @@ img {
 .boton-cancelar {
     background-color: #3B70B0;
     text-decoration: none;
+    width: 10rem
 }
 
 .boton-cancelar:hover {
