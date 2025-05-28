@@ -54,14 +54,13 @@ img {
   margin: 0 auto;
 }
 
-.convertir a {
-  display: block;
-  margin-bottom: 0.2em;
+a {
+  text-align: center;
   color: #3b70b0;
   text-decoration: none;
 }
 
-.convertir a:hover {
+a:hover {
   text-decoration: underline;
 }
 
