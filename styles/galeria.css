@@ -145,13 +145,19 @@ footer {
   .categoria_buscador {
     display: flex;
     justify-content: space-between;
-    top:6.22rem
+    top: 6.22rem;
   }
   .search {
     width: 12rem;
   }
   .galeria {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 64em) and (min-width: 60.125em) {
+  .categoria_buscador{
+    top: 3.1rem;
   }
 }
 
@@ -179,7 +185,7 @@ footer {
     display: flex;
     align-items: center;
   }
-  .buscador form{
+  .buscador form {
     width: 100%;
     display: flex;
     justify-content: flex-end;
