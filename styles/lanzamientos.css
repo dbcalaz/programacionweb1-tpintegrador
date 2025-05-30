@@ -48,7 +48,14 @@ main {
 }
 
 .campana img {
-  width: 2rem;
-  height: 2rem;
-  background-color: aliceblue;
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: white;
+  opacity: 0.5;
+  border-radius: 1rem;
+}
+
+.campana img:hover{
+  cursor: pointer;
+  background-color: black;
 }

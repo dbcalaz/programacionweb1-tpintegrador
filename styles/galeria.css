@@ -130,6 +130,38 @@ img {
   height: auto;
 }
 
+.foto {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.foto img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.corazon {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.corazon img {
+  width: 1.2rem;
+  height: 1.2rem;
+  background-color: white;
+  opacity: 0.5;
+  border-radius: 1rem;
+}
+
+.corazon img:hover{
+  cursor: pointer;
+  background-color: red;
+}
+
 footer {
   background-color: #e6e6e6;
   padding-bottom: 1.5rem;
