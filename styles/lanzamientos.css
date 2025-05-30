@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+}
+
+.box-seccion{
+    margin-top: 5rem;
+    padding: 1rem;
+}
+
+.box-seccion h2{
+    margin-bottom: 1rem;
+}
+
+.box{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.box img{
+    width: 100%;
+    height: auto;
+}
+
+
