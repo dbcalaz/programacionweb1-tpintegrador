@@ -1,108 +1,172 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Perfil de Usuario</title>
-  <link rel="stylesheet" href="./styles/perfil.css" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="./styles/perfil.css" />
+  </head>
 
-<body>
-
-  <header>
-    <nav class="nav">
-      <ul class="nav_ul">
-        <li class="puntero">
-          <a href="./galeria.html"><img class="image_home" src="./images/home.png" alt="home" />Home</a>
-        </li>
-        <li class="puntero">
-          <a href="./series.html"
-            ><img src="./images/PeliSerie.png" alt="serie" /> Series</a
+  <body>
+    <header>
+      <nav class="nav">
+        <ul class="nav_ul">
+          <li class="puntero">
+            <a href="./galeria.html"
+              ><img
+                class="image_home"
+                src="./images/home.png"
+                alt="home"
+              />Home</a
             >
-        </li>
-        <li class="puntero">
-          <a href="./peliculas.html"
-            ><img src="./images/PeliSerie.png" alt="pelicula" /> Películas</a
-          >
-        </li>
-        <li class="PerfilSeleccionado">
-          <a href="./perfil-usuario.html"><img src="./images/perfil.png" alt="perfil" /> Perfil</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+          </li>
+          <li class="puntero">
+            <a href="./series.html"
+              ><img src="./images/PeliSerie.png" alt="serie" /> Series</a
+            >
+          </li>
+          <li class="puntero">
+            <a href="./peliculas.html"
+              ><img src="./images/PeliSerie.png" alt="pelicula" /> Películas</a
+            >
+          </li>
+          <li class="PerfilSeleccionado">
+            <a href="./perfil-usuario.html"
+              ><img src="./images/perfil.png" alt="perfil" /> Perfil</a
+            >
+          </li>
+          <li class="puntero">
+            <a href="./lanzamientos.html"
+              ><img src="./images/PeliSerie.png" alt="lanzamientos" /> Próximos
+              lanzamientos</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
 
-  <div class="contenedor-principal">
-   
-    <form action="./galeria.html" method="get" class="formulario-contenedor">
-      
-      <!-- Perfil de usuario -->
-      <section class="columna columna-izquierda">
-        <img src="./images/FotoPerfil.png" alt="Foto de perfil" class="foto-perfil" />
-        <p class="perfil-usuario">Nombre de usuario</p>
-        <a href="./index.html" class="boton boton-cerrar">Cerrar sesión</a>
-      </section>
-
-      <!-- Información de cuenta -->
-      <section class="columna columna-central">
-        <article class="sección-formulario">
-          <label for="email">Email</label>
-          <p class="e-mail">usuario@gmail.com</p>
-        </article>
-
-        <article class="sección-formulario">
-          <label for="contrasenia">Contraseña</label>
-          <input id="contrasenia" name="contrasenia" type="password" value="**********" disabled />
-        </article>
-
-        <article class="sección-formulario">
-          <label for="nueva-contrasenia">Nueva contraseña</label>
-          <input id="nueva-contrasenia" name="nueva-contrasenia" type="password" placeholder="Ingrese nueva contraseña" required/>
-        </article>
-
-        <article class="sección-formulario">
-          <label for="repetir-contrasenia">Repetir contraseña</label>
-          <input id="repetir-contrasenia" name="repetir-contrasenia" type="password" placeholder="Ingrese nueva contraseña" required/>
-        </article>
-      </section>
-
-      <!-- Métodos de pago -->
-      <section class="columna columna-derecha">
-        <p class="seccion-titulo">Método de pago</p>
-
-        <article class="metodo-pago">
-          <label><input type="radio" name="metodo-pago" id="tarjeta-credito" required/> Tarjeta de crédito</label>
-          <div class="datos-tarjeta">
-            <input type="number" placeholder="Número de tarjeta" class="datos-tarjeta"/>
-            <input type="number" placeholder="XXX" class="datos-tarjeta"/>
-          </div>
-        </article>
-
-        <article class="metodo-pago">
-          <label><input type="radio" name="metodo-pago" id="cupon-pago" required/> Cupón de pago</label>
-          <div class="opcion-checkbox">
-            <label><input type="checkbox"/> Pago fácil</label>
-            <label><input type="checkbox" /> RapiPago</label>
-          </div>
-        </article>
-
-        <article class="metodo-pago">
-          <label><input type="radio" name="metodo-pago" id="transferencia-bancaria" required/> Transferencia bancaria</label>
-          <p class="cbu">CBU: 2183909411100018971375</p>
-        </article>
-
-        <section class="botones">
-          <button class="boton boton-guardar" type="submit">Guardar cambios</button>
-          <a href="./index.html" class="boton boton-cancelar">Cancelar suscripción</a>
+    <div class="contenedor-principal">
+      <form action="./galeria.html" method="get" class="formulario-contenedor">
+        <!-- Perfil de usuario -->
+        <section class="columna columna-izquierda">
+          <img
+            src="./images/FotoPerfil.png"
+            alt="Foto de perfil"
+            class="foto-perfil"
+          />
+          <p class="perfil-usuario">Nombre de usuario</p>
+          <a href="./index.html" class="boton boton-cerrar">Cerrar sesión</a>
         </section>
-      </section>
 
-    </form>
-  </div>
+        <!-- Información de cuenta -->
+        <section class="columna columna-central">
+          <article class="sección-formulario">
+            <label for="email">Email</label>
+            <p class="e-mail">usuario@gmail.com</p>
+          </article>
 
-  <footer>
-    Programación Web 1 - Grupo 7: Calaz, Daniela Belén - Casanova, Rocio Luján - Córdoba, Agustina - Sidero, Celeste
-  </footer>
+          <article class="sección-formulario">
+            <label for="contrasenia">Contraseña</label>
+            <input
+              id="contrasenia"
+              name="contrasenia"
+              type="password"
+              value="**********"
+              disabled
+            />
+          </article>
 
-</body>
+          <article class="sección-formulario">
+            <label for="nueva-contrasenia">Nueva contraseña</label>
+            <input
+              id="nueva-contrasenia"
+              name="nueva-contrasenia"
+              type="password"
+              placeholder="Ingrese nueva contraseña"
+              required
+            />
+          </article>
+
+          <article class="sección-formulario">
+            <label for="repetir-contrasenia">Repetir contraseña</label>
+            <input
+              id="repetir-contrasenia"
+              name="repetir-contrasenia"
+              type="password"
+              placeholder="Ingrese nueva contraseña"
+              required
+            />
+          </article>
+        </section>
+
+        <!-- Métodos de pago -->
+        <section class="columna columna-derecha">
+          <p class="seccion-titulo">Método de pago</p>
+
+          <article class="metodo-pago">
+            <label
+              ><input
+                type="radio"
+                name="metodo-pago"
+                id="tarjeta-credito"
+                required
+              />
+              Tarjeta de crédito</label
+            >
+            <div class="datos-tarjeta">
+              <input
+                type="number"
+                placeholder="Número de tarjeta"
+                class="datos-tarjeta"
+              />
+              <input type="number" placeholder="XXX" class="datos-tarjeta" />
+            </div>
+          </article>
+
+          <article class="metodo-pago">
+            <label
+              ><input
+                type="radio"
+                name="metodo-pago"
+                id="cupon-pago"
+                required
+              />
+              Cupón de pago</label
+            >
+            <div class="opcion-checkbox">
+              <label><input type="checkbox" /> Pago fácil</label>
+              <label><input type="checkbox" /> RapiPago</label>
+            </div>
+          </article>
+
+          <article class="metodo-pago">
+            <label
+              ><input
+                type="radio"
+                name="metodo-pago"
+                id="transferencia-bancaria"
+                required
+              />
+              Transferencia bancaria</label
+            >
+            <p class="cbu">CBU: 2183909411100018971375</p>
+          </article>
+
+          <section class="botones">
+            <button class="boton boton-guardar" type="submit">
+              Guardar cambios
+            </button>
+            <a href="./index.html" class="boton boton-cancelar"
+              >Cancelar suscripción</a
+            >
+          </section>
+        </section>
+      </form>
+    </div>
+
+    <footer>
+      Programación Web 1 - Grupo 7: Calaz, Daniela Belén - Casanova, Rocio Luján
+      - Córdoba, Agustina - Sidero, Celeste
+    </footer>
+  </body>
 </html>
