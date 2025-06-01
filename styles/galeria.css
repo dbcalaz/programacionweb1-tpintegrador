@@ -147,19 +147,19 @@ img {
   position: absolute;
   top: 0.9rem;
   right: 0.7rem;
-}
-
-.corazon img {
-  width: 1.8rem;
-  height: 1.8rem;
   background-color: white;
   opacity: 0.5;
   border-radius: 50%;
-  padding: 0.3rem;
   box-sizing: border-box;
+  padding: 0.3rem;
 }
 
-.corazon img:hover {
+.corazon img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.corazon:hover {
   cursor: pointer;
   background-color: red;
   opacity: 1;
@@ -180,10 +180,10 @@ footer {
   .nav_ul {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2,1fr);
+    grid-template-rows: repeat(2, 1fr);
     font-size: medium;
   }
-  .nav_ul li{
+  .nav_ul li {
     min-width: 100%;
   }
   .home {
@@ -243,10 +243,10 @@ footer {
   .nav_ul {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2,1fr);
+    grid-template-rows: repeat(2, 1fr);
     font-size: small;
   }
-  .nav_ul li{
+  .nav_ul li {
     min-width: 100%;
   }
   .home {
@@ -333,10 +333,10 @@ footer {
   .nav_ul {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2,1fr);
+    grid-template-rows: repeat(2, 1fr);
     font-size: x-small;
   }
-  .nav_ul li{
+  .nav_ul li {
     min-width: 100%;
   }
   .home {
