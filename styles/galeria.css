@@ -225,6 +225,7 @@ footer {
   }
   .galeria {
     grid-template-columns: repeat(3, 1fr);
+    top: 13rem;
   }
 }
 
