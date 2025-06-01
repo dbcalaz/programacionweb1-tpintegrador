@@ -5,10 +5,11 @@
 main {
   display: flex;
   flex-direction: column;
+  margin-top: 4.5rem;
+  margin-bottom: 3.5rem;
 }
 
-.box-seccion {
-  margin-top: 5rem;
+.box-seccion{
   padding: 1rem;
 }
 
@@ -20,7 +21,6 @@ main {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  margin-bottom: 3rem;
 }
 
 .box img {
@@ -58,4 +58,11 @@ main {
 .campana img:hover{
   cursor: pointer;
   background-color: black;
+}
+
+@media screen and (max-width: 64em) {
+}
+
+@media screen and (max-width: 48em) {
+  
 }
