@@ -9,7 +9,7 @@ main {
   margin-bottom: 3.5rem;
 }
 
-.box-seccion{
+.box-seccion {
   padding: 1rem;
 }
 
@@ -55,14 +55,34 @@ main {
   border-radius: 1rem;
 }
 
-.campana img:hover{
+.campana img:hover {
   cursor: pointer;
   background-color: black;
 }
 
 @media screen and (max-width: 64em) {
+  main {
+    margin-top: 6rem;
+  }
+  .box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
 }
 
 @media screen and (max-width: 48em) {
-  
+  .box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 30em) {
+  .box {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+  }
 }
