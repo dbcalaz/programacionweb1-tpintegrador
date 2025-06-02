@@ -28,13 +28,13 @@ main {
   height: auto;
 }
 
-.foto {
+.foto-suscripto {
   position: relative;
   width: 100%;
   height: auto;
 }
 
-.foto img {
+.foto-suscripto img {
   display: block;
   width: 100%;
   height: auto;
@@ -47,6 +47,11 @@ main {
   right: 0.5rem;
 }
 
+.campana.pintado img{
+  background-color: yellow;
+  opacity: 1;
+}
+
 .campana img {
   width: 1.8rem;
   height: 1.8rem;
@@ -57,7 +62,8 @@ main {
 
 .campana img:hover {
   cursor: pointer;
-  background-color: black;
+  background-color: yellow;
+  opacity: 1;
 }
 
 @media screen and (max-width: 64em) {

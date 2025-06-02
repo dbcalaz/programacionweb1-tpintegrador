@@ -154,6 +154,11 @@ img {
   padding: 0.3rem;
 }
 
+.corazon.pintado {
+  background-color: red;
+  opacity: 1;
+}
+
 .corazon img {
   width: 1.5rem;
   height: 1.5rem;
