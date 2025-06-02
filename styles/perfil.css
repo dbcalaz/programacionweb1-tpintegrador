@@ -12,6 +12,15 @@ body {
   background-color: #e6e6e6;
 }
 
+.ContenedorGeneral {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  align-items: start;
+  padding-top: 4rem;
+
+}
+
 .contenedor-principal {
   display: flex;
   justify-content: center;
