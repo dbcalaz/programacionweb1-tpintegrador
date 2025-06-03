@@ -244,6 +244,7 @@ input[type="number"] {
   margin-top: 10px;
 }
 
+/*CSS CARRUSEL 1*/
 .info_favorito_contenido {
   width: 100%;
   padding: 1rem;
@@ -290,6 +291,72 @@ input[type="number"] {
   align-items: center;
   justify-content: space-between;
   padding: 1.25rem;
+}
+
+/*CSS CARRUSEL 2*/
+.contenedor_general {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 100%;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.columnaa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 25rem;
+  overflow: hidden; 
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.columnaa h2 {
+  margin-bottom: 1rem;
+}
+
+.columnaa:nth-child(2) {
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
+#contenedorItemCarrusel {
+  width: 100%;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.itemCarrusel {
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.tarjetaCarrusel {
+  height: 100%;
+  position: relative;
+}
+
+.tarjetaCarrusel img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.flechasCarrusel {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.flechasCarrusel img {
+  width: 2rem;
+  height: 2rem;
 }
 
 footer {
