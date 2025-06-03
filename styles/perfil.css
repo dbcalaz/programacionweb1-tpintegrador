@@ -255,7 +255,7 @@ input[type="number"] {
   margin-bottom: 0.5rem;
 }
 
-[id^="contenedor_info_carrusel"] {
+.contenedor_info_carrusel {
   height: 34.5rem;
   overflow: hidden;
 }
@@ -384,6 +384,14 @@ footer {
 
   .boton {
     width: 100%;
+  }
+
+  .contenedor_info_carrusel {
+    height: 22rem;
+  }
+
+  .flechas_carrusel span {
+    font-size: 2rem;
   }
 
   footer {
