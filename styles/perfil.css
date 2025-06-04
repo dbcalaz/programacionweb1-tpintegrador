@@ -383,8 +383,14 @@ footer {
     flex: 0 0 90%;
   }
 
-  .foto_carrusel {
-    height: 200px;
+ .foto_carrusel {
+    width: 100%;
+    height: auto;
+  }
+
+  .foto_carrusel img {
+    height: auto;
+    object-fit: cover;
   }
 
   .info_favorito_contenido h2 {
