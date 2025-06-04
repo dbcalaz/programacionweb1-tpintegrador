@@ -286,17 +286,6 @@ input[type="number"] {
   display: block;
 }
 
-footer {
-  background-color: #e6e6e6;
-  text-align: center;
-  width: 100%;
-  padding: 1em;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
 @media (max-width: 768px) {
   .formulario-contenedor,
   .ContenedorGeneral {
