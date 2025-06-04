@@ -264,7 +264,7 @@ input[type="number"] {
 }
 
 .info_carrusel {
-  flex: 0 0 80%;
+  flex: 0 0 auto;
   scroll-snap-align: center;
   border-radius: 1rem;
   overflow: hidden;
@@ -272,8 +272,8 @@ input[type="number"] {
 }
 
 .foto_carrusel {
-  width: 100%;
-  height: auto;
+  width: 437px;
+  height: 228px;
   position: relative;
   overflow: hidden;
   border-radius: 1rem;
