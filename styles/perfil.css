@@ -18,7 +18,6 @@ body {
   height: 100vh;
   align-items: start;
   padding-top: 4rem;
-
 }
 
 .contenedor-principal {
@@ -27,7 +26,6 @@ body {
   padding: 20px;
   margin-top: 2rem;
   margin-bottom: 1rem;
-
 }
 
 .formulario-contenedor {
@@ -143,7 +141,7 @@ input[type="number"] {
   align-items: flex-start;
 }
 
-.metodo-pago>label,
+.metodo-pago > label,
 .opcion-checkbox label {
   display: flex;
   align-items: center;
@@ -222,11 +220,11 @@ input[type="number"] {
 }
 
 .boton-cerrar {
-  background-color: #3B70B0;
+  background-color: #3b70b0;
 }
 
 .boton-cerrar:hover {
-  background-color: #26456E;
+  background-color: #26456e;
 }
 
 .boton {
@@ -244,119 +242,188 @@ input[type="number"] {
   margin-top: 10px;
 }
 
-/*CSS CARRUSEL 1*/
-.info_favorito_contenido {
-  width: 100%;
-  padding: 1rem;
-  margin-bottom: 3.5rem;
+/* SCROLLER */
+/* horizontal scroll snap */
+.carousel {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+
+  /* snap to center */
+  & li {
+    scroll-snap-align: center;
+  }
 }
 
-.info_favorito_contenido h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+/* SCROLL BUTTONS */
+/* create buttons by selecting them and adding content */
+.carousel {
+  &::scroll-button(*) {
+    /* make them round and easy to press */
+    inline-size: 48px;
+    aspect-ratio: 1;
+    border-radius: 1e3px;
+    border: 2px solid #999;
+
+    /* space from content */
+    margin: 5px;
+  }
+
+  &::scroll-button(*):focus-visible {
+    outline-offset: 5px;
+  }
+
+  &::scroll-button(*):not(:disabled):is(:hover, :active) {
+    background-color: Canvas;
+  }
+
+  &::scroll-button(*):not(:disabled):active {
+    scale: 90%;
+  }
+
+  &::scroll-button(left) {
+    content: "⬅" / "Scroll Left";
+    grid-area: left; /* place markers in parent grid area */
+  }
+
+  &::scroll-button(right) {
+    content: "⮕" / "Scroll Right";
+    grid-area: right;
+  }
 }
 
-.contenedor_info_carrusel {
-  height: 34.5rem;
-  overflow: hidden;
+/* SCROLL MARKERS */
+/* create marker group */
+/* create markers for each item */
+.carousel {
+  /* create markers 'after' scroller */
+
+  /* create markers container and own dots layout */
+  &::scroll-marker-group {
+    grid-area: markers; /* place markers in parent grid area */
+
+    /* 15px by 15px horizontal grid - size of dots */
+    display: grid;
+    place-content: safe center;
+    grid: 30px / auto-flow 30px;
+    gap: 15px;
+    padding: 15px;
+    scroll-padding: 15px;
+
+    /* handle overflow */
+    overflow: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+
+    @media (prefers-reduced-motion: no-preference) {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* a marker for each <li> */
+  & > .content > li {
+    /* create by adding content */
+    &::scroll-marker {
+      content: " "; /* empty content is fine, just like ::before */
+
+      /* style it as you need */
+      border: 1px solid #bbb;
+      border-radius: 50%;
+      outline-offset: 4px;
+      -webkit-tap-highlight-color: transparent;
+
+      /* snap if group is overflowing */
+      scroll-snap-align: center;
+    }
+
+    &::scroll-marker:is(:hover, :focus-visible) {
+      border-color: LinkText;
+    }
+
+    &::scroll-marker:target-current {
+      background: LinkText;
+      border-color: LinkText;
+    }
+  }
 }
 
-.info_carrusel {
-  min-width: 100%;
-  height: 100%;
-  position: relative;
+@layer support.demo {
+  html,
+  body {
+    block-size: 100%;
+  }
 }
 
-.foto_carrusel {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  border-radius: 1rem;
-  overflow: hidden;
-}
-
-.foto_carrusel img {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.flechas_carrusel {
-  position: absolute;
-  color: white;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.25rem;
-}
-
-/*CSS CARRUSEL 2*/
-.contenedor_general {
+body {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  height: 100%;
-  padding: 1rem;
-  gap: 1rem;
+  place-content: start center;
+  margin: 0;
+  padding: 10vmin;
 }
 
-.columnaa {
+.scroll-layout {
+  display: grid;
+  /*     border: 1px dashed gray; */
+
+  /* try a different layout =) */
+  grid-template-areas:
+    "left scroll right"
+    ". markers .";
+
+  /* just place items in the grid */
+  grid-template-areas:
+    "scroll scroll scroll"
+    "left markers right";
+
+  grid-template-columns: auto 1fr auto;
+
+  .carousel {
+    grid-area: scroll;
+  }
+}
+
+.carousel {
+  max-inline-size: 80cqi;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+}
+
+.content {
+  display: grid;
+  grid: auto / auto-flow 50vmin;
+  gap: 15px;
+  padding: 0;
+  margin: 0;
+
+  > li {
+    list-style-type: none;
+    /*border: 3px solid #888; BORDE DE UN BOX*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: auto; /* Tamaño según contenido */
+    height: auto; /* Tamaño según contenido */
+    max-width: 40rem; /* Limita el ancho máximo */
+    max-height: 28rem; /* Limita el alto máximo */
+    box-sizing: border-box;
+  }
+}
+
+.contenedor-carrusel {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  max-height: 25rem;
-  overflow: hidden; 
-  padding: 1rem;
-  box-sizing: border-box;
 }
 
-.columnaa h2 {
-  margin-bottom: 1rem;
-}
-
-.columnaa:nth-child(2) {
-  border-left: 2px solid black;
-  border-right: 2px solid black;
-}
-
-#contenedorItemCarrusel {
-  width: 100%;
-  flex-grow: 1;
-  overflow: hidden;
-}
-
-.itemCarrusel {
-  padding: 0.5rem;
-  width: 100%;
-}
-
-.tarjetaCarrusel {
-  height: 100%;
-  position: relative;
-}
-
-.tarjetaCarrusel img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.flechasCarrusel {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-}
-
-.flechasCarrusel img {
-  width: 2rem;
-  height: 2rem;
+.contenedor-carrusel .scroll-layout:nth-child(2) {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 footer {
@@ -371,7 +438,6 @@ footer {
 }
 
 @media (max-width: 768px) {
-
   .formulario-contenedor,
   .ContenedorGeneral {
     grid-template-columns: 1fr;
