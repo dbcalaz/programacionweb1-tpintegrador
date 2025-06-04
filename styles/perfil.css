@@ -254,20 +254,20 @@ input[type="number"] {
 }
 
 .contenedor_info_carrusel {
-  display: flex; /*Esto hace que los elementos hijos (cada .info_carrusel) se ubiquen en fila, uno al lado del otro.*/
-  overflow-x: auto; /*Permite el scroll horizontal. Si el contenido excede el ancho del contenedor, podés deslizarlo de izquierda a derecha.*/
-  scroll-snap-type: x mandatory; /*Activa el "scroll snap": cuando se hace scroll, el carrusel se “ancla” en el punto más cercano definido por scroll-snap-align.*/
-  scroll-padding: 1rem; /*Agrega un poco de espacio alrededor del contenido que se alinea con el scroll-snap. Esto sirve para que no quede pegado al borde.*/
+  display: flex; 
+  overflow-x: auto; 
+  scroll-snap-type: x mandatory; 
+  scroll-padding: 1rem; 
   gap: 1rem;
   padding-bottom: 1rem;
-  scroll-behavior: smooth; /*Hace que el desplazamiento del scroll sea suave, no brusco. Es más agradable a la vista.*/
+  scroll-behavior: smooth; 
 }
 
 .info_carrusel {
-  flex: 0 0 auto; /*El elemento tendrá exactamente el ancho que defina su contenido o width, no crecerá ni se encogerá aunque el contenedor flex tenga espacio de más o de menos.*/
-  scroll-snap-align: center; /*Hace que este elemento se centre en el viewport cuando se hace scroll horizontal. Gracias a esto, el efecto de carrusel se siente más fluido y natural.*/
+  flex: 0 0 auto;
+  scroll-snap-align: center;
   border-radius: 1rem;
-  overflow: hidden; /*Oculta cualquier contenido que se salga del borde redondeado (por ejemplo, si una imagen es más grande).*/
+  overflow: hidden;
   position: relative;
 }
 
