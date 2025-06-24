@@ -1,221 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Página princial</title>
-    <link rel="stylesheet" href="./styles/galeria.css" />
-    <link rel="stylesheet" href="./styles/serie_pelicula.css" />
-  </head>
 
-  <body>
-    <header>
-      <nav class="nav">
-        <ul class="nav_ul">
-          <li class="puntero home">
-            <a href="./galeria.html"
-              ><img
-                class="image_home"
-                src="./images/home.png"
-                alt="home"
-              />Home</a
-            >
-          </li>
-          <li class="puntero serie">
-            <a href="./series.html"
-              ><img src="./images/PeliSerie.png" alt="serie" /> Series</a
-            >
-          </li>
-          <li class="activo peli">
-            <a href="./peliculas.html"
-              ><img src="./images/PeliSerie.png" alt="pelicula" /> Películas</a
-            >
-          </li>
-          <li class="puntero perfil">
-            <a href="./perfil-usuario.html"
-              ><img src="./images/perfil.png" alt="perfil" /> Perfil</a
-            >
-          </li>
-          <li class="puntero lanzamientos">
-            <a href="./lanzamientos.html"
-              ><img src="./images/PeliSerie.png" alt="lanzamientos" /><span
-                >Próximos<br />lanzamientos</span
-              ></a
-            >
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <main class="main">
-      <section class="categoria_buscador">
-        <article class="categoria">
-          <form class="form_categoria" action="" method="get">
-            <label for="categoria">Categorías</label>
-            <select name="categoria" id="categoria">
-              <option value="vacio">Seleccionar categoría</option>
-              <option value="accion">Acción</option>
-              <option value="aventura">Aventura</option>
-              <option value="ciencia_ficcion">Ciencia Ficción</option>
-              <option value="comedia">Comedia</option>
-              <option value="documentales">Documentales</option>
-              <option value="drama">Drama</option>
-              <option value="fantasia">Fantasía</option>
-              <option value="musicales">Musicales</option>
-              <option value="suspenso">Suspenso</option>
-              <option value="terror">Terror</option>
-            </select>
-          </form>
-        </article>
-        <article class="buscador">
-          <form action="" method="get">
-            <label for="buscador"></label>
-            <input
-              class="search"
-              type="search"
-              name="buscador"
-              id="buscador"
-              placeholder="Buscar por nombre"
-            />
-          </form>
-        </article>
-      </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página princial</title>
+  <link rel="stylesheet" href="./styles/galeria.css" />
+  <link rel="stylesheet" href="./styles/serie_pelicula.css" />
+</head>
 
-      <section class="galeria">
-        <div class="foto">
-          <a href="./detallePelicula.html"
-            ><img src="./images/constantine.jpg" alt="constantine"
-          /></a>
-          <div class="corazon">
-            <img src="./images/corazon4.png" alt="corazon" />
-          </div>
-        </div>
-        <div class="foto">
-          <a href="./detallePelicula.html"
-            ><img src="./images/Godzilla-y-Kong-Portada.jpg" alt="godzilla"
-          /></a>
-          <div class="corazon">
-            <img src="./images/corazon4.png" alt="corazon" />
-          </div>
-        </div>
-        <div class="foto">
-          <a href="./detallePelicula.html"
-            ><img src="./images/animales.jpg" alt="animalesFantatasticos"
-          /></a>
-          <div class="corazon">
-            <img src="./images/corazon4.png" alt="corazon" />
-          </div>
-        </div>
-        <div class="foto">
-          <a href="./detallePelicula.html"
-            ><img src="./images/marioBros.jpg" alt="marioBros"
-          /></a>
-          <div class="corazon">
-            <img src="./images/corazon4.png" alt="corazon" />
-          </div>
-        </div>
-        <div class="foto">
-          <a href="./detallePelicula.html"
-            ><img src="./images/implacable.webp" alt="implacable"
-          /></a>
-          <div class="corazon">
-            <img src="./images/corazon4.png" alt="corazon" />
-          </div>
-        </div>
-        <div class="foto">
-          <a href="./detallePelicula.html"
-            ><img src="./images/toyStory2.webp" alt="toyStory2"
-          /></a>
-          <div class="corazon">
-            <img src="./images/corazon4.png" alt="corazon" />
-          </div>
-        </div>
-        <div class="foto">
-          <a href="./detallePelicula.html"
-            ><img src="./images/deadpool.jpg" alt="deadpool"
-          /></a>
-          <div class="corazon">
-            <img src="./images/corazon4.png" alt="corazon" />
-          </div>
-        </div>
-        <div class="foto">
-          <a href="./detallePelicula.html"
-            ><img src="./images/constantine.jpg" alt="constantine"
-          /></a>
-          <div class="corazon">
-            <img src="./images/corazon4.png" alt="corazon" />
-          </div>
-        </div>
-        <div class="foto">
-          <a href="./detallePelicula.html"
-            ><img src="./images/Godzilla-y-Kong-Portada.jpg" alt="godzilla"
-          /></a>
-          <div class="corazon">
-            <img src="./images/corazon4.png" alt="corazon" />
-          </div>
-        </div>
-        <div class="foto">
-          <a href="./detallePelicula.html"
-            ><img src="./images/animales.jpg" alt="animalesFantatasticos"
-          /></a>
-          <div class="corazon">
-            <img src="./images/corazon4.png" alt="corazon" />
-          </div>
-        </div>
-        <div class="foto">
-          <a href="./detallePelicula.html"
-            ><img src="./images/marioBros.jpg" alt="marioBros"
-          /></a>
-          <div class="corazon">
-            <img src="./images/corazon4.png" alt="corazon" />
-          </div>
-        </div>
-        <div class="foto">
-          <a href="./detallePelicula.html"
-            ><img src="./images/implacable.webp" alt="implacable"
-          /></a>
-          <div class="corazon">
-            <img src="./images/corazon4.png" alt="corazon" />
-          </div>
-        </div>
-        <div class="foto">
-          <a href="./detallePelicula.html"
-            ><img src="./images/toyStory2.webp" alt="toyStory2"
-          /></a>
-          <div class="corazon">
-            <img src="./images/corazon4.png" alt="corazon" />
-          </div>
-        </div>
-        <div class="foto">
-          <a href="./detallePelicula.html"
-            ><img src="./images/deadpool.jpg" alt="deadpool"
-          /></a>
-          <div class="corazon">
-            <img src="./images/corazon4.png" alt="corazon" />
-          </div>
-        </div>
-        <div class="foto">
-          <a href="./detallePelicula.html"
-            ><img src="./images/constantine.jpg" alt="constantine"
-          /></a>
-          <div class="corazon">
-            <img src="./images/corazon4.png" alt="corazon" />
-          </div>
-        </div>
-        <div class="foto">
-          <a href="./detallePelicula.html"
-            ><img src="./images/Godzilla-y-Kong-Portada.jpg" alt="godzilla"
-          /></a>
-          <div class="corazon">
-            <img src="./images/corazon4.png" alt="corazon" />
-          </div>
-        </div>
-      </section>
-    </main>
-    <footer>
-      <p>
-        Programación web 1 - Grupo 7: Calaz, Daniela Belén - Casanova, Rocío
-        Luján - Córdoba, Agustina - Sidero, Celeste.
-      </p>
-    </footer>
-  </body>
+<body>
+  <header>
+    <nav class="nav">
+      <ul class="nav_ul">
+        <li class="puntero home">
+          <a href="./galeria.html"><img class="image_home" src="./images/home.png" alt="home" />Home</a>
+        </li>
+        <li class="puntero serie">
+          <a href="./series.html"><img src="./images/PeliSerie.png" alt="serie" /> Series</a>
+        </li>
+        <li class="activo peli">
+          <a href="./peliculas.html"><img src="./images/PeliSerie.png" alt="pelicula" /> Películas</a>
+        </li>
+        <li class="puntero perfil">
+          <a href="./perfil-usuario.html"><img src="./images/perfil.png" alt="perfil" /> Perfil</a>
+        </li>
+        <li class="puntero lanzamientos">
+          <a href="./lanzamientos.html"><img src="./images/PeliSerie.png"
+              alt="lanzamientos" /><span>Próximos<br />lanzamientos</span></a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main class="main">
+    <section class="categoria_buscador">
+      <!-- Tus formularios de categoría y buscador quedan igual -->
+      <article class="categoria">
+        <form class="form_categoria" action="" method="get">
+          <label for="categoria">Categorías</label>
+          <select name="categoria" id="categoria">
+            <option value="vacio">Seleccionar categoría</option>
+            <option value="acción">Acción</option>
+            <option value="aventura">Aventura</option>
+            <option value="ciencia ficción">Ciencia Ficción</option>
+            <option value="comedia">Comedia</option>
+            <option value="documentales">Documentales</option>
+            <option value="drama">Drama</option>
+            <option value="fantasia">Fantasía</option>
+            <option value="familiar">Familiar</option>
+            <option value="suspenso">Suspenso</option>
+            <option value="thriller">Thriller</option>
+          </select>
+        </form>
+      </article>
+      <article class="buscador">
+        <form action="" method="get">
+          <label for="buscador"></label>
+          <input class="search" type="search" name="buscador" id="buscador" placeholder="Buscar por nombre" />
+        </form>
+      </article>
+    </section>
+
+    <section class="galeria" id="galeriaPeliculas">
+    </section>
+
+  </main>
+  <footer>
+    <p>
+      Programación web 1 - Grupo 7: Calaz, Daniela Belén - Casanova, Rocío
+      Luján - Córdoba, Agustina - Sidero, Celeste.
+    </p>
+  </footer>
+
+  <script src="./js/contenido.js"></script>
+  <script src="./js/peliculas.js"></script>
+</body>
+
 </html>

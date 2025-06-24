@@ -40,15 +40,15 @@
       <!-- Perfil de usuario -->
       <section class="columna columna-izquierda">
         <img src="./images/FotoPerfil.png" alt="Foto de perfil" class="foto-perfil" />
-        <p class="perfil-usuario">Nombre de usuario</p>
+        <p class="perfil-usuario" id="nombreDeUsuario">Nombre de usuario</p>
         <a href="./index.html" class="boton boton-cerrar">Cerrar sesión</a>
       </section>
 
       <!-- Información de cuenta -->
       <section class="columna columna-central">
         <article class="sección-formulario">
-          <label for="email">Email</label>
-          <p class="e-mail">usuario@gmail.com</p>
+          <label for="email" id="emailDeUsuario">Email</label>
+          <p class="e-mail"></p>
         </article>
 
         <article class="sección-formulario">
@@ -57,16 +57,20 @@
         </article>
 
         <article class="sección-formulario">
-          <label for="nueva-contrasenia">Nueva contraseña</label>
-          <input id="nueva-contrasenia" name="nueva-contrasenia" type="password" placeholder="Ingrese nueva contraseña"
+          <label for="nuevaContrasenia">Nueva contraseña</label>
+          <input id="nuevaContrasenia" name="nueva-contrasenia" type="password" placeholder="Ingrese nueva contraseña"
             required />
         </article>
 
         <article class="sección-formulario">
-          <label for="repetir-contrasenia">Repetir contraseña</label>
-          <input id="repetir-contrasenia" name="repetir-contrasenia" type="password"
+          <label for="repetirContrasenia">Repetir contraseña</label>
+          <input id="repetirContrasenia" name="repetir-contrasenia" type="password"
             placeholder="Ingrese nueva contraseña" required />
         </article>
+
+        <div class="input-con-error">
+          <p id="errorContrasenia" class="error"></p>
+        </div>
       </section>
 
       <!-- Métodos de pago -->
@@ -74,279 +78,70 @@
         <p class="seccion-titulo">Método de pago</p>
 
         <article class="metodo-pago">
-          <label><input type="radio" name="metodo-pago" id="tarjeta-credito" required />
+          <label><input type="radio" name="metodo-pago" id="tarjeta-credito" />
             Tarjeta de crédito</label>
           <div class="datos-tarjeta">
-            <input type="number" placeholder="Número de tarjeta" class="datos-tarjeta" />
-            <input type="number" placeholder="XXX" class="datos-tarjeta" />
+            <input id="numeroTarjeta" type="number" placeholder="Número de tarjeta" class="datos-tarjeta" />
+            <input id="claveTarjeta" type="number" placeholder="XXX" class="datos-tarjeta" />
+          </div>
+          <div class="input-con-error">
+            <p id="errorTarjeta" class="error"></p>
+            <p id="errorClave" class="error"></p>
           </div>
         </article>
 
         <article class="metodo-pago">
-          <label><input type="radio" name="metodo-pago" id="cupon-pago" required />
+          <label><input type="radio" name="metodo-pago" id="cuponPago" />
             Cupón de pago</label>
           <div class="opcion-checkbox">
             <label><input type="checkbox" /> Pago fácil</label>
             <label><input type="checkbox" /> RapiPago</label>
           </div>
+          <div class="input-con-error">
+            <p id="errorCupon" class="error"></p>
+          </div>
         </article>
 
         <article class="metodo-pago">
-          <label><input type="radio" name="metodo-pago" id="transferencia-bancaria" required />
+          <label><input type="radio" name="metodo-pago" id="transferenciaBancaria" />
             Transferencia bancaria</label>
           <p class="cbu">CBU: 2183909411100018971375</p>
         </article>
 
         <section class="botones">
-          <button class="boton boton-guardar" type="submit">
-            Guardar cambios
-          </button>
+          <button class="boton boton-guardar" type="submit">Guardar cambios</button>
           <a href="./index.html" class="boton boton-cancelar">Cancelar suscripción</a>
         </section>
       </section>
     </form>
   </div>
-
+  
   <section class="info_favorito_contenido">
     <h2>Películas Favoritas</h2>
-    <div class="contenedor_info_carrusel">
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <a href="./detallePelicula.html"><img src="./images/Godzilla-y-Kong-Portada.jpg" alt="Godzilla y Kong" /></a>
-          <div class="corazon pintado">
-            <img src="./images/corazon4.png" alt="corazon">
-          </div>
-        </div>
-      </div>
-
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <a href="./detallePelicula.html"><img src="./images/DestinoFinal.jpg" alt="Destino Final" /></a>
-          <div class="corazon pintado">
-            <img src="./images/corazon4.png" alt="corazon">
-          </div>
-        </div>
-      </div>
-
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <a href="./detallePelicula.html"><img src="./images/implacable.webp" alt="Implacable" /></a>
-          <div class="corazon pintado">
-            <img src="./images/corazon4.png" alt="corazon">
-          </div>
-        </div>
-      </div>
-
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <a href="./detallePelicula.html"><img src="./images/marioBros.jpg" alt="Mario Bros" /></a>
-          <div class="corazon pintado">
-            <img src="./images/corazon4.png" alt="corazon">
-          </div>
-        </div>
-      </div>
-
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <a href="./detallePelicula.html"><img src="./images/Godzilla-y-Kong-Portada.jpg" alt="Godzilla y Kong" /></a>
-          <div class="corazon pintado">
-            <img src="./images/corazon4.png" alt="corazon">
-          </div>
-        </div>
-      </div>
-
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <a href="./detallePelicula.html"><img src="./images/DestinoFinal.jpg" alt="Destino Final" /></a>
-          <div class="corazon pintado">
-            <img src="./images/corazon4.png" alt="corazon">
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="contenedor_info_carrusel" id="contenedorFavoritosPeliculas"></div>
   </section>
 
   <section class="info_favorito_contenido">
     <h2>Series Favoritas</h2>
-    <div class="contenedor_info_carrusel">
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <a href="./detalleSerie.html"><img src="./images/grey.webp" alt="grey" /></a>
-          <div class="corazon pintado">
-            <img src="./images/corazon4.png" alt="corazon">
-          </div>
-        </div>
-      </div>
-
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <a href="./detalleSerie.html"><img src="./images/eternauta.jpeg" alt="eternauta" /></a>
-          <div class="corazon pintado">
-            <img src="./images/corazon4.png" alt="corazon">
-          </div>
-        </div>
-      </div>
-
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <a href="./detalleSerie.html"><img src="./images/breakingBad.webp" alt="breaking Bad" /></a>
-          <div class="corazon pintado">
-            <img src="./images/corazon4.png" alt="corazon">
-          </div>
-        </div>
-      </div>
-
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <a href="./detalleSerie.html"><img src="./images/LosSimpsons.jpg" alt="Los Simpsons" /></a>
-          <div class="corazon pintado">
-            <img src="./images/corazon4.png" alt="corazon">
-          </div>
-        </div>
-      </div>
-
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <a href="./detalleSerie.html"><img src="./images/grey.webp" alt="grey" /></a>
-          <div class="corazon pintado">
-            <img src="./images/corazon4.png" alt="corazon">
-          </div>
-        </div>
-      </div>
-
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <a href="./detalleSerie.html"><img src="./images/eternauta.jpeg" alt="eternauta" /></a>
-          <div class="corazon pintado">
-            <img src="./images/corazon4.png" alt="corazon">
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="contenedor_info_carrusel" id="contenedorFavoritosSeries"></div>
   </section>
 
   <section class="info_favorito_contenido">
     <h2>Películas Suscriptas</h2>
-    <div class="contenedor_info_carrusel">
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <img src="./images/Conclave.jpg" alt="Conclave" />
-          <div class="campana pintado">
-            <img src="./images/campana3.png" alt="campana">
-          </div>
-        </div>
-      </div>
-
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <img src="./images/Dune2.jpg" alt="Dune 2" />
-          <div class="campana pintado">
-            <img src="./images/campana3.png" alt="campana">
-          </div>
-        </div>
-      </div>
-
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <img src="./images/MisionImposible.jpg" alt="Mision Imposible" />
-          <div class="campana pintado">
-            <img src="./images/campana3.png" alt="campana">
-          </div>
-        </div>
-      </div>
-
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <img src="./images/Wonka.jpg" alt="Wonka" />
-          <div class="campana pintado">
-            <img src="./images/campana3.png" alt="campana">
-          </div>
-        </div>
-      </div>
-
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <img src="./images/Formula1.jpg" alt="Formula 1" />
-          <div class="campana pintado">
-            <img src="./images/campana3.png" alt="campana">
-          </div>
-        </div>
-      </div>
-
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <img src="./images/Wicked.jpg" alt="Wicked" />
-          <div class="campana pintado">
-            <img src="./images/campana3.png" alt="campana">
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="contenedor_info_carrusel" id="contenedorSuscripcionesPeliculas"></div>
   </section>
 
   <section class="info_favorito_contenido">
     <h2>Series Suscriptas</h2>
-    <div class="contenedor_info_carrusel">
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <img src="./images/BlackMirror.jpg" alt="Black Mirror" />
-          <div class="campana pintado">
-            <img src="./images/campana3.png" alt="campana">
-          </div>
-        </div>
-      </div>
-
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <img src="./images/TheRookie.jpg" alt="The Rookie" />
-          <div class="campana pintado">
-            <img src="./images/campana3.png" alt="campana">
-          </div>
-        </div>
-      </div>
-
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <img src="./images/Motorheads.jpg" alt="Motor heads" />
-          <div class="campana pintado">
-            <img src="./images/campana3.png" alt="campana">
-          </div>
-        </div>
-      </div>
-
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <img src="./images/YellowJackets.jpg" alt="Yellow Jackets" />
-          <div class="campana pintado">
-            <img src="./images/campana3.png" alt="campana">
-          </div>
-        </div>
-      </div>
-
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <img src="./images/You.jpg" alt="You" />
-          <div class="campana pintado">
-            <img src="./images/campana3.png" alt="campana">
-          </div>
-        </div>
-      </div>
-
-      <div class="info_carrusel">
-        <div class="foto_carrusel">
-          <img src="./images/Sirens.jpg" alt="Sirens" />
-          <div class="campana pintado">
-            <img src="./images/campana3.png" alt="campana">
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="contenedor_info_carrusel" id="contenedorSuscripcionesSeries"></div>
   </section>
 
   <footer>
     Programación Web 1 - Grupo 7: Calaz, Daniela Belén - Casanova, Rocio Luján
     - Córdoba, Agustina - Sidero, Celeste
   </footer>
+  <script src="./js/contenido.js"></script>
+  <script src="./js/perfil.js"></script>
 </body>
 
 </html>

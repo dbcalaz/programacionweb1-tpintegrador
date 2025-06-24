@@ -18,15 +18,16 @@
                 class="image_home"
                 src="./images/home.png"
                 alt="home"
-              />Home</a>
+              />Home</a
+            >
           </li>
           <li class="puntero serie">
-            <a href="./series.html"
+            <a href="./series.html?tipo=Serie"
               ><img src="./images/PeliSerie.png" alt="serie" /> Series</a
             >
           </li>
           <li class="puntero peli">
-            <a href="./peliculas.html"
+            <a href="./peliculas.html?tipo=Pelicula"
               ><img src="./images/PeliSerie.png" alt="pelicula" /> Películas</a
             >
           </li>
@@ -48,119 +49,19 @@
     <main class="contendor_general">
       <section class="box-seccion uno">
         <h2>Estrenos de esta semana</h2>
-        <article class="box">
-          <div class="foto-suscripto">
-            <img src="./images/BlackMirror.jpg" alt="BlackMirror" />
-            <div class="campana">
-              <img src="./images/campana3.png" alt="campana" />
-            </div>
-          </div>
-          <div class="foto-suscripto">
-            <img src="./images/Conclave.jpg" alt="Conclave" />
-            <div class="campana">
-              <img src="./images/campana3.png" alt="campana" />
-            </div>
-          </div>
-          <div class="foto-suscripto">
-            <img src="./images/DestinoFinal.jpg" alt="DestinoFinal" />
-            <div class="campana">
-              <img src="./images/campana3.png" alt="campana" />
-            </div>
-          </div>
-          <div class="foto-suscripto">
-            <img src="./images/Dune2.jpg" alt="Dune2" />
-            <div class="campana">
-              <img src="./images/campana3.png" alt="campana" />
-            </div>
-          </div>
-        </article>
+        <article class="box" id="esta_semana"></article>
       </section>
       <section class="box-seccion">
         <h2>Estrenos de la próxima semana</h2>
-        <article class="box">
-          <div class="foto-suscripto">
-            <img src="./images/Formula1.jpg" alt="Formula1" />
-            <div class="campana">
-              <img src="./images/campana3.png" alt="campana" />
-            </div>
-          </div>
-          <div class="foto-suscripto">
-            <img src="./images/MisionImposible.jpg" alt="MisionImposible" />
-            <div class="campana">
-              <img src="./images/campana3.png" alt="campana" />
-            </div>
-          </div>
-          <div class="foto-suscripto">
-            <img src="./images/Motorheads.jpg" alt="Motorheads" />
-            <div class="campana">
-              <img src="./images/campana3.png" alt="campana" />
-            </div>
-          </div>
-          <div class="foto-suscripto">
-            <img src="./images/Severance.jpg" alt="Severance" />
-            <div class="campana">
-              <img src="./images/campana3.png" alt="campana" />
-            </div>
-          </div>
-        </article>
+        <article class="box" id="proxima_semana"></article>
       </section>
       <section class="box-seccion">
         <h2>Estrenos del mes que viene</h2>
-        <article class="box">
-          <div class="foto-suscripto">
-            <img src="./images/Sirens.jpg" alt="Sirens" />
-            <div class="campana">
-              <img src="./images/campana3.png" alt="campana" />
-            </div>
-          </div>
-          <div class="foto-suscripto">
-            <img src="./images/TedLasso.jpg" alt="TedLasso" />
-            <div class="campana">
-              <img src="./images/campana3.png" alt="campana" />
-            </div>
-          </div>
-          <div class="foto-suscripto">
-            <img src="./images/TheBear.jpg" alt="TheBear" />
-            <div class="campana">
-              <img src="./images/campana3.png" alt="campana" />
-            </div>
-          </div>
-          <div class="foto-suscripto">
-            <img src="./images/TheRookie.jpg" alt="TheRookie" />
-            <div class="campana">
-              <img src="./images/campana3.png" alt="campana" />
-            </div>
-          </div>
-        </article>
+        <article class="box" id="proximo_mes"></article>
       </section>
       <section class="box-seccion">
         <h2>En grabación</h2>
-        <article class="box">
-          <div class="foto-suscripto">
-            <img src="./images/Wicked.jpg" alt="Wicked" />
-            <div class="campana">
-              <img src="./images/campana3.png" alt="campana" />
-            </div>
-          </div>
-          <div class="foto-suscripto">
-            <img src="./images/Wonka.jpg" alt="Wonka" />
-            <div class="campana">
-              <img src="./images/campana3.png" alt="campana" />
-            </div>
-          </div>
-          <div class="foto-suscripto">
-            <img src="./images/YellowJackets.jpg" alt="YellowJackets" />
-            <div class="campana">
-              <img src="./images/campana3.png" alt="campana" />
-            </div>
-          </div>
-          <div class="foto-suscripto">
-            <img src="./images/You.jpg" alt="You" />
-            <div class="campana">
-              <img src="./images/campana3.png" alt="campana" />
-            </div>
-          </div>
-        </article>
+        <article class="box" id="en_grabacion"></article>
       </section>
     </main>
     <footer>
@@ -169,5 +70,7 @@
         Luján - Córdoba, Agustina - Sidero, Celeste.
       </p>
     </footer>
+    <script src="./js/data_lanzamientos.js"></script>
+    <script src="./js/lanzamientos.js"></script>
   </body>
 </html>

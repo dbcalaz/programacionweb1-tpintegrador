@@ -135,6 +135,7 @@ img {
   position: relative;
   width: 100%;
   height: auto;
+  overflow: hidden;
 }
 
 .foto img {
@@ -142,6 +143,16 @@ img {
   width: 100%;
   height: auto;
   object-fit: cover;
+}
+
+.mensaje-error {
+  font-size: 1.5rem;
+  color: #e63946;
+  text-align: center;
+  margin-top: 2rem;
+  padding: 2rem;
+  background-color: #ffe0e0;
+  border-radius: 1rem;
 }
 
 .corazon {
@@ -153,6 +164,13 @@ img {
   border-radius: 50%;
   box-sizing: border-box;
   padding: 0.3rem;
+  cursor: pointer;
+}
+
+.corazon:hover {
+  cursor: pointer;
+  background-color: red;
+  opacity: 1;
 }
 
 .corazon.pintado {
@@ -168,13 +186,7 @@ img {
   height: 1.5rem;
 }
 
-.corazon:hover {
-  cursor: pointer;
-  background-color: red;
-  opacity: 1;
-}
-
-.contenedor-carrusel{
+.contenedor-carrusel {
   padding-bottom: 4.5rem;
 }
 
