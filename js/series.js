@@ -3,10 +3,15 @@ const inputNombre = document.getElementById('buscador');
 const selectCategoria = document.getElementById('categoria');
 const series = CONTENIDO.series;
 
+// Obtener usuario activo y usuarios
+const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+const indiceUsuario = usuarios.findIndex(u => u.email === usuarioActivo.email);
+let favoritos = usuarios[indiceUsuario].favoritos || [];
+
 // Mostrar series
 function mostrarSeries(items) {
   galeria.innerHTML = '';
-  const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
 
   if (items.length === 0) {
     galeria.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
@@ -18,7 +23,6 @@ function mostrarSeries(items) {
     const div = document.createElement('div');
     div.classList.add('foto');
 
-    // clave única para evitar conflictos con peliculas
     const clave = `${item.id}-serie`;
 
     div.innerHTML = `
@@ -34,12 +38,9 @@ function mostrarSeries(items) {
 
     let corazon = div.querySelector('.corazon');
 
-    // Buscar si está en favoritos
-    for (let j = 0; j < favoritos.length; j++) {
-      if (favoritos[j].id == item.id && favoritos[j].tipo === 'serie') {
-        corazon.classList.add('pintado');
-        break;
-      }
+    // Marcar favoritos pintados si ya estaban
+    if (favoritos.some(f => f.id == item.id && f.tipo === 'serie')) {
+      corazon.classList.add('pintado');
     }
   }
 }
@@ -54,9 +55,8 @@ function filtrarSeries() {
     const coincideCategoria =
       categoria === 'todas' ||
       categoria === 'vacio' ||
-      serie.genero.some(function (g) {
-        return g.toLowerCase() === categoria;
-      });
+      serie.genero.some(g => g.toLowerCase() === categoria);
+
     return coincideNombre && coincideCategoria;
   });
 
@@ -67,14 +67,13 @@ function filtrarSeries() {
 inputNombre.addEventListener('input', filtrarSeries);
 selectCategoria.addEventListener('change', filtrarSeries);
 
-// Al hacer click marcar favoritos
+// Click para marcar/desmarcar favoritos
 document.addEventListener('click', function (event) {
   const corazon = event.target.closest('.corazon');
 
   if (corazon) {
     const clave = corazon.id;
     const [id, tipo] = clave.split('-');
-    let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
 
     const item = series.find(s => s.id == id);
     const yaExiste = favoritos.find(fav => fav.id == id && fav.tipo === tipo);
@@ -87,9 +86,12 @@ document.addEventListener('click', function (event) {
       corazon.classList.add('pintado');
     }
 
-    localStorage.setItem('favoritos', JSON.stringify(favoritos));
+    // Actualizar usuario y guardar cambios
+    usuarios[indiceUsuario].favoritos = favoritos;
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+    localStorage.setItem("usuarioActivo", JSON.stringify(usuarios[indiceUsuario]));
   }
 });
 
-// Mostrar todas al cargar
+// Mostrar todas al inicio
 mostrarSeries(series);

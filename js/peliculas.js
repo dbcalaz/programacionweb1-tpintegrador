@@ -3,9 +3,14 @@ const inputNombre = document.getElementById('buscador');
 const selectCategoria = document.getElementById('categoria');
 const peliculas = CONTENIDO.peliculas;
 
+// Obtener usuario activo y lista de usuarios
+const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+const indiceUsuario = usuarios.findIndex(u => u.email === usuarioActivo.email);
+let favoritos = usuarios[indiceUsuario].favoritos || [];
+
 function mostrarPeliculas(items) {
   galeria.innerHTML = '';
-  let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
 
   if (items.length === 0) {
     galeria.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
@@ -17,7 +22,6 @@ function mostrarPeliculas(items) {
     let div = document.createElement('div');
     div.classList.add('foto');
 
-    // clave única para evitar conflictos con series
     const clave = `${item.id}-pelicula`;
 
     div.innerHTML = `
@@ -31,14 +35,11 @@ function mostrarPeliculas(items) {
 
     galeria.appendChild(div);
 
-    let corazon = div.querySelector('.corazon');
+    const corazon = div.querySelector('.corazon');
 
-    // Buscar si está en favoritos
-    for (let j = 0; j < favoritos.length; j++) {
-      if (favoritos[j].id == item.id && favoritos[j].tipo === 'pelicula') {
-        corazon.classList.add('pintado');
-        break;
-      }
+    // Marcar si está en favoritos
+    if (favoritos.some(f => f.id == item.id && f.tipo === 'pelicula')) {
+      corazon.classList.add('pintado');
     }
   }
 }
@@ -48,14 +49,12 @@ function filtrarPeliculas() {
   const nombre = inputNombre.value.toLowerCase().trim();
   const categoria = selectCategoria.value.toLowerCase();
 
-  const filtradas = peliculas.filter(function(pelicula) {
+  const filtradas = peliculas.filter(function (pelicula) {
     const coincideNombre = pelicula.titulo.toLowerCase().startsWith(nombre);
     const coincideCategoria =
       categoria === 'todas' ||
       categoria === 'vacio' ||
-      pelicula.genero.some(function(g) {
-        return g.toLowerCase() === categoria;
-      });
+      pelicula.genero.some(g => g.toLowerCase() === categoria);
 
     return coincideNombre && coincideCategoria;
   });
@@ -66,29 +65,31 @@ function filtrarPeliculas() {
 inputNombre.addEventListener('input', filtrarPeliculas);
 selectCategoria.addEventListener('change', filtrarPeliculas);
 
-// Al hacer click marcar favoritos
+// Click para marcar/desmarcar favoritos
 document.addEventListener('click', function (event) {
   const corazon = event.target.closest('.corazon');
 
   if (corazon) {
     const clave = corazon.id;
     const [id, tipo] = clave.split('-');
-    let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
 
-    const item = peliculas.find(p => p.id == id); // buscamos la película
+    const item = peliculas.find(p => p.id == id);
     const yaExiste = favoritos.find(fav => fav.id == id && fav.tipo === tipo);
 
     if (yaExiste) {
       favoritos = favoritos.filter(fav => !(fav.id == id && fav.tipo === tipo));
       corazon.classList.remove('pintado');
     } else {
-      favoritos.push({ ...item, tipo: 'pelicula' }); // agregamos con tipo
+      favoritos.push({ ...item, tipo: 'pelicula' });
       corazon.classList.add('pintado');
     }
 
-    localStorage.setItem('favoritos', JSON.stringify(favoritos));
+    // Guardar cambios en usuario activo
+    usuarios[indiceUsuario].favoritos = favoritos;
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+    localStorage.setItem("usuarioActivo", JSON.stringify(usuarios[indiceUsuario]));
   }
 });
 
-// Mostrar todas al cargar
+// Mostrar todas al inicio
 mostrarPeliculas(peliculas);

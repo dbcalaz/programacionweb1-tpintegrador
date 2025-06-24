@@ -3,6 +3,7 @@ const proximaSemana = document.getElementById("proxima_semana");
 const proximoMes = document.getElementById("proximo_mes");
 const enGrabacion = document.getElementById("en_grabacion");
 
+// Lanzamientos
 let lanzamientos = [];
 const lanzamientosJSON = localStorage.getItem("lanzamientos");
 if (!lanzamientosJSON) {
@@ -12,6 +13,13 @@ if (!lanzamientosJSON) {
   lanzamientos = JSON.parse(lanzamientosJSON);
 }
 
+// Obtener usuario activo
+const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+const indiceUsuario = usuarios.findIndex(u => u.email === usuarioActivo.email);
+let suscripciones = usuarios[indiceUsuario].suscripciones || [];
+
+// Crear tarjeta de lanzamiento
 function crearLanzamiento(lanzamiento) {
   const divFoto = document.createElement("div");
   divFoto.classList.add("foto-suscripto");
@@ -27,46 +35,28 @@ function crearLanzamiento(lanzamiento) {
   campana.src = "./images/campana3.png";
   campana.alt = "Notificarme";
 
-  const suscripciones = JSON.parse(localStorage.getItem("suscripciones") || "[]");
-  let estaSuscrito = false;
-  for (let i = 0; i < suscripciones.length; i++) {
-    if (suscripciones[i].id === lanzamiento.id) {
-      estaSuscrito = true;
-      break;
-    }
-  }
-
+  let estaSuscrito = suscripciones.some(s => s.id === lanzamiento.id && s.tipo === lanzamiento.tipo);
   if (estaSuscrito) {
     divCampana.classList.add("pintado");
   }
 
   campana.addEventListener("click", function(e) {
     e.preventDefault();
-    const suscripcionesActuales = JSON.parse(localStorage.getItem("suscripciones") || "[]");
-    let yaEsta = false;
-    for (let j = 0; j < suscripcionesActuales.length; j++) {
-      if (suscripcionesActuales[j].id === lanzamiento.id) {
-        yaEsta = true;
-        break;
-      }
-    }
 
-    let nuevasSuscripciones;
+    let yaEsta = suscripciones.some(s => s.id === lanzamiento.id && s.tipo === lanzamiento.tipo);
+
     if (yaEsta) {
-      nuevasSuscripciones = [];
-      for (let k = 0; k < suscripcionesActuales.length; k++) {
-        if (suscripcionesActuales[k].id !== lanzamiento.id) {
-          nuevasSuscripciones.push(suscripcionesActuales[k]);
-        }
-      }
+      suscripciones = suscripciones.filter(s => !(s.id === lanzamiento.id && s.tipo === lanzamiento.tipo));
       divCampana.classList.remove("pintado");
     } else {
-      nuevasSuscripciones = suscripcionesActuales.slice();
-      nuevasSuscripciones.push(lanzamiento);
+      suscripciones.push(lanzamiento);
       divCampana.classList.add("pintado");
     }
 
-    localStorage.setItem("suscripciones", JSON.stringify(nuevasSuscripciones));
+    // Actualizar usuario y guardar
+    usuarios[indiceUsuario].suscripciones = suscripciones;
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+    localStorage.setItem("usuarioActivo", JSON.stringify(usuarios[indiceUsuario]));
   });
 
   divCampana.appendChild(campana);
@@ -76,10 +66,10 @@ function crearLanzamiento(lanzamiento) {
   return divFoto;
 }
 
+// Renderizar lanzamientos por categoría
 for (let i = 0; i < lanzamientos.length; i++) {
   let lanzamiento = lanzamientos[i];
   const descripcion = lanzamiento.descripcion.toLowerCase();
-
   const div = crearLanzamiento(lanzamiento);
 
   if (descripcion === "esta semana") {

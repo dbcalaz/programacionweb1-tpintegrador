@@ -212,17 +212,26 @@ document.addEventListener("DOMContentLoaded", () => {
   validarFormulario(); // Llamar al inicio para habilitar/deshabilitar correctamente el botón
 });
 
+const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+if (!usuarioActivo) {
+  alert("No hay sesión activa. Redirigiendo al inicio.");
+  window.location.href = "index.html";
+}
+
+const indiceUsuario = usuarios.findIndex(u => u.email === usuarioActivo.email);
+let favoritos = usuarios[indiceUsuario].favoritos || [];
+let suscripciones = usuarios[indiceUsuario].suscripciones || [];
+
 const contenedorPeliculas = document.getElementById('contenedorFavoritosPeliculas');
 const contenedorSeries = document.getElementById('contenedorFavoritosSeries');
-
-let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
 
 let hayPeliculas = false;
 let haySeries = false;
 
-for (let i = 0; i < favoritos.length; i++) {
-  let favorito = favoritos[i];
-
+// FAVORITOS
+for (let favorito of favoritos) {
   let divInfoCarrusel = document.createElement("div");
   divInfoCarrusel.classList.add("info_carrusel");
 
@@ -244,14 +253,14 @@ for (let i = 0; i < favoritos.length; i++) {
   imgCorazon.alt = "corazon";
 
   imgCorazon.addEventListener("click", function () {
-    favoritos = favoritos.filter(function (fav) {
-      return !(fav.id === favorito.id && fav.tipo === favorito.tipo);
-    });
+    favoritos = favoritos.filter(fav => !(fav.id === favorito.id && fav.tipo === favorito.tipo));
 
-    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+    usuarios[indiceUsuario].favoritos = favoritos;
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+    localStorage.setItem("usuarioActivo", JSON.stringify(usuarios[indiceUsuario]));
+
     divInfoCarrusel.remove();
 
-    // Mostrar mensaje si se elimina el último
     if (favorito.tipo === "pelicula" && contenedorPeliculas.children.length === 0) {
       contenedorPeliculas.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
     }
@@ -275,26 +284,21 @@ for (let i = 0; i < favoritos.length; i++) {
   }
 }
 
-// Mostrar mensajes de error si no hay favoritos por tipo
 if (!hayPeliculas) {
   contenedorPeliculas.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
 }
-
 if (!haySeries) {
   contenedorSeries.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
 }
 
+// SUSCRIPCIONES
 const contenedorSuscripcionesPeliculas = document.getElementById("contenedorSuscripcionesPeliculas");
 const contenedorSuscripcionesSeries = document.getElementById("contenedorSuscripcionesSeries");
-
-let suscripciones = JSON.parse(localStorage.getItem("suscripciones")) || [];
 
 let hayPeliculasSus = false;
 let haySeriesSus = false;
 
-for (let j = 0; j < suscripciones.length; j++) {
-  let suscripto = suscripciones[j];
-
+for (let suscripto of suscripciones) {
   let divInfoCarrusel = document.createElement("div");
   divInfoCarrusel.classList.add("info_carrusel");
 
@@ -316,13 +320,14 @@ for (let j = 0; j < suscripciones.length; j++) {
   imgCampana.alt = "Desuscribirse";
 
   imgCampana.addEventListener("click", function () {
-    suscripciones = suscripciones.filter(
-      sub => !(sub.id === suscripto.id && sub.tipo === suscripto.tipo)
-    );
-    localStorage.setItem("suscripciones", JSON.stringify(suscripciones));
+    suscripciones = suscripciones.filter(sub => !(sub.id === suscripto.id && sub.tipo === suscripto.tipo));
+
+    usuarios[indiceUsuario].suscripciones = suscripciones;
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+    localStorage.setItem("usuarioActivo", JSON.stringify(usuarios[indiceUsuario]));
+
     divInfoCarrusel.remove();
 
-    // Si eliminás la última, se muestra el mensaje de error de nuevo
     if (suscripto.tipo === "pelicula" && contenedorSuscripcionesPeliculas.children.length === 0) {
       contenedorSuscripcionesPeliculas.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
     }
@@ -346,11 +351,9 @@ for (let j = 0; j < suscripciones.length; j++) {
   }
 }
 
-// Mostrar mensaje de error si no hay resultados en cada categoría
 if (!hayPeliculasSus) {
   contenedorSuscripcionesPeliculas.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
 }
-
 if (!haySeriesSus) {
   contenedorSuscripcionesSeries.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
 }

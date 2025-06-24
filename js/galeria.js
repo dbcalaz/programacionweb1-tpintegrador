@@ -2,13 +2,22 @@ const galeria = document.getElementById('galeria');
 const inputNombre = document.getElementById('buscador');
 const selectCategoria = document.getElementById('categoria');
 
+const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+
+if (!usuarioActivo) {
+  alert("No hay una sesión activa. Redirigiendo al inicio.");
+  window.location.href = "index.html";
+}
+
 // Se agrego CONTENIDO a un array
 const contenido = [...CONTENIDO.peliculas, ...CONTENIDO.series];
 
 // Función para mostrar elementos en galería
 function mostrarGaleria(items) {
   galeria.innerHTML = '';
-  let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+  let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+  let indiceUsuario = usuarios.findIndex(u => u.email === usuarioActivo.email);
+  let favoritos = usuarios[indiceUsuario].favoritos || [];
 
   if (items.length === 0) {
     galeria.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
@@ -79,10 +88,12 @@ document.addEventListener('click', function (event) {
 
   if (corazon) {
     const clave = corazon.id;
-    let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-
     const [id, tipo] = clave.split('-');
     const item = contenido.find(el => el.id == id && el.tipo === tipo);
+
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    let indiceUsuario = usuarios.findIndex(u => u.email === usuarioActivo.email);
+    let favoritos = usuarios[indiceUsuario].favoritos || [];
 
     const yaExiste = favoritos.find(fav => fav.id == id && fav.tipo === tipo);
 
@@ -94,7 +105,10 @@ document.addEventListener('click', function (event) {
       corazon.classList.add('pintado');
     }
 
-    localStorage.setItem('favoritos', JSON.stringify(favoritos));
+    // Actualizar usuario y guardar
+    usuarios[indiceUsuario].favoritos = favoritos;
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+    localStorage.setItem("usuarioActivo", JSON.stringify(usuarios[indiceUsuario]));
   }
 });
 
