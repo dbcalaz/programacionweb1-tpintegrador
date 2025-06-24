@@ -23,7 +23,7 @@ const errorMetodoPago = document.getElementById("errorMetodoPago");
 const errorNumeroTarjeta = document.getElementById("errorNumeroTarjeta");
 const errorClaveTarjeta = document.getElementById("errorClaveTarjeta");
 
-// === Funciones de validación ===
+// Funciones de validación
 function validarTexto(texto) {
   return /^[a-zA-Z]+$/.test(texto);
 }
@@ -82,7 +82,7 @@ function limpiarErrores() {
   errorClaveTarjeta.textContent = "";
 }
 
-// === Habilitar o deshabilitar campos de tarjeta ===
+// Habilitar o deshabilitar campos de tarjeta
 function actualizarEstadoCamposTarjeta() {
   const activa = esMetodoTarjetaSeleccionado();
   numeroTarjeta.disabled = !activa;
@@ -96,7 +96,7 @@ function actualizarEstadoCamposTarjeta() {
   }
 }
 
-// === Botón Confirmar activado solo si todo está válido ===
+// Botón Confirmar activado solo si todo está válido
 function verificarEstadoBotonConfirmar() {
   let camposOk =
     nombre.value.trim() !== "" &&
@@ -123,7 +123,7 @@ function verificarEstadoBotonConfirmar() {
   btnConfirmar.disabled = !camposOk;
 }
 
-// === Escuchas de cambios en todos los campos relevantes ===
+// Escuchas de cambios en todos los campos relevantes
 [nombre, apellido, email, nombreUsuario, contrasenia, repetirContrasenia, numeroTarjeta, claveTarjeta].forEach(el =>
   el.addEventListener("input", verificarEstadoBotonConfirmar)
 );
@@ -136,7 +136,7 @@ metodoPagoRadios.forEach(radio => {
   });
 });
 
-// === Evento principal del formulario ===
+// Evento principal del formulario
 formulario.addEventListener("submit", function (event) {
   let valido = true;
   limpiarErrores();
@@ -216,7 +216,7 @@ formulario.addEventListener("submit", function (event) {
   localStorage.setItem("usuarios", JSON.stringify(usuarios));
 });
 
-// === Al cargar la página ===
+// Al cargar la página
 actualizarEstadoCamposTarjeta();
 verificarEstadoBotonConfirmar();
 

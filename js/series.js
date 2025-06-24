@@ -18,7 +18,7 @@ function mostrarSeries(items) {
     const div = document.createElement('div');
     div.classList.add('foto');
 
-    // clave única para evitar conflictos
+    // clave única para evitar conflictos con peliculas
     const clave = `${item.id}-serie`;
 
     div.innerHTML = `

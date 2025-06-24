@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.removeItem("usuarioActivo");
   });
 
-  // NUEVO: Mostrar método de pago previamente guardado
+  // Mostrar método de pago previamente guardado
   if (usuarioActivo && usuarioActivo.metodoPago) {
     const metodo = usuarioActivo.metodoPago.tipo;
 
@@ -322,7 +322,7 @@ for (let j = 0; j < suscripciones.length; j++) {
     localStorage.setItem("suscripciones", JSON.stringify(suscripciones));
     divInfoCarrusel.remove();
 
-    // Si eliminás la última, podés verificar si hay que mostrar el mensaje de nuevo
+    // Si eliminás la última, se muestra el mensaje de error de nuevo
     if (suscripto.tipo === "pelicula" && contenedorSuscripcionesPeliculas.children.length === 0) {
       contenedorSuscripcionesPeliculas.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
     }

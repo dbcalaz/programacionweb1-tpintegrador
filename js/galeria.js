@@ -2,7 +2,7 @@ const galeria = document.getElementById('galeria');
 const inputNombre = document.getElementById('buscador');
 const selectCategoria = document.getElementById('categoria');
 
-// Agregamos los dos a un array
+// Se agrego CONTENIDO a un array
 const contenido = [...CONTENIDO.peliculas, ...CONTENIDO.series];
 
 // Función para mostrar elementos en galería
