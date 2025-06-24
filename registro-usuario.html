@@ -1,129 +1,41 @@
 <!DOCTYPE html>
-<html lang="es">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Registro de usuario</title>
-  <link rel="stylesheet" href="./styles/perfil.css" />
-</head>
-
-<body>
-
-  <header class="Registrarse">
-    <h1>Registrarse</h1>
-  </header>
-
-  <div class="ContenedorGeneral">
-
-    <!-- Sección izquierda: Formulario de usuario -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/perfil.css" />
+  </head>
+  <body>
     <section class="FormularioContactoGlobal">
-        <form action="./index.html" id="form">
-
+      <form action="./index.html" id="form">
         <article class="FormularioContacto">
-          <label for="Nombre">Nombre</label>
-          <div class="input-con-error">
+          <label for="nombre">Nombre</label>
+          <div id="contenedorError" class="input-con-error">
             <input type="text" id="nombre" name="nombre" placeholder="Nombre" />
             <p id="errorNombre" class="error"></p>
           </div>
         </article>
-
         <article class="FormularioContacto">
-          <label for="Apellido">Apellido</label>
+          <label for="apellido">Apellido</label>
           <div class="input-con-error">
             <input type="text" id="apellido" name="apellido" placeholder="Ingrese apellido" />
             <p id="errorApellido" class="error"></p>
           </div>
         </article>
-
-        <article class="FormularioContacto">
-          <label for="Email">E-mail</label>
-          <div class="input-con-error">
-            <input type="text" id="email" name="email" placeholder="Ingrese email" />
-            <p id="errorEmail" class="error"></p>
-          </div>
-        </article>
-
-        <article class="FormularioContacto">
-          <label for="NombreUsuario">Nombre de usuario</label>
-          <div class="input-con-error">
-            <input type="text" id="nombreDeUsuario" name="nombreDeUsuario" placeholder="Nombre de usuario" />
-            <p id="errorNombreDeUsuario" class="error"></p>
-          </div>
-        </article>
-
-        <article class="FormularioContacto">
-          <label for="Contrasena">Contraseña</label>
-          <div class="input-con-error">
-            <input type="password" id="contrasenia" name="contrasenia" placeholder="Contraseña" />
-            <p id="errorContrasenia" class="error"></p>
-          </div>
-        </article>
-
-        <article class="FormularioContacto">
-          <label for="RepetirContrasena">Repetir contraseña</label>
-          <div class="input-con-error">
-            <input type="password" id="repetirContrasenia" name="repetirContrasenia" placeholder="Repetir contraseña" />
-            <p id="errorRepetirContrasenia" class="error"></p>
-          </div>
-        </article>
-
-      </section>
-
-      <!-- Sección derecha: Métodos de pago -->
-      <section class="MetodoPagoGlobal">
-
-        <p class="seccion-titulo">Método de pago</p>
-
-        <article class="metodo-pago">
-          <label>
-            <input type="radio" name="metodoPago" value="tarjeta" />
-            Tarjeta de crédito
-          </label>
-          <div class="datos-tarjeta">
-            <input type="number" name="numeroTarjeta" class="datos-tarjeta" id="numeroTarjeta"
-              placeholder="Número de tarjeta" />
-            <input type="number" class="datos-tarjeta" id="claveTarjeta" name="Codigo" placeholder="XXX" />
-          </div>
-          <div class="input-con-error">
-            <p id="errorNumeroTarjeta" class="errorTarjeta"></p>
-            <p id="errorClaveTarjeta" class="errorTarjeta"></p>
-          </div>
-        </article>
-
-        <article class="metodo-pago">
-          <label><input type="radio" name="metodoPago" id="cuponPago" value="cupon" /> Cupón de pago</label>
-          <div class="opcion-checkbox">
-            <label><input type="checkbox" /> Pago fácil</label>
-            <label><input type="checkbox" /> RapiPago</label>
-          </div>
-        </article>
-
-        <article class="metodo-pago">
-          <label>
-            <input type="radio" name="metodoPago" id="transferenciaBancaria" value="transferencia" />
-            Transferencia bancaria
-          </label>
-          <p class="cbu">CBU: 0000003100055994120766</p>
-        </article>
-
-        <div class="input-con-error">
-          <p id="errorMetodoPago" class="error"></p>
-        </div>
-
-        <div class="botones">
-          <button class="boton boton-guardar" type="submit" id="btnConfirmar" disabled>Confirmar</button>
-          <a href="./index.html" class="boton boton-cancelar">Cancelar</a>
-        </div>
-      </section>
-
-    </form>
-  </div>
-
-  <footer>
-    Programación Web 1 - Grupo 7: Calaz, Daniela Belén - Casanova, Rocio Luján - Córdoba, Agustina - Sidero, Celeste
-  </footer>
-  <script src="./js/registro-usuario.js"></script>
-</body>
-
+      </form>
+    </section>
+    <div class="botones">
+      <button
+        class="boton boton-guardar"
+        type="submit"
+        id="btnConfirmar"
+        disabled
+      >
+        Confirmar
+      </button>
+      <a href="./index.html" class="boton boton-cancelar">Cancelar</a>
+    </div>
+    <script src="./js/registro-usuario.js"></script>
+  </body>
 </html>
