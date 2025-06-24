@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
   if (usuarioActivo) {
-    nombreDeUsuario.textContent = usuarioActivo.nombreUsuario;
+    nombreDeUsuario.textContent = usuarioActivo.nombreDeUsuario;
     emailDeUsuario.textContent = usuarioActivo.email;
   }
 

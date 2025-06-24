@@ -23,11 +23,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const nombreIngresado = inputUsuario.value.trim();
     const contraseniaIngresada = inputContrasenia.value.trim();
 
-    // Buscar usuario por nombreUsuario o email + contraseña
+    // Buscar usuario por nombreUsuario + contraseña
     const usuarioEncontrado = usuarios.find(
       (u) =>
         // TODO: se puede hacer login con el mail?
-        (u.nombreDeUsuario === nombreIngresado  /*|| u.email === nombreIngresado*/) &&
+        u.nombreDeUsuario === nombreIngresado  /*|| u.email === nombreIngresado*/ &&
         u.contrasenia === contraseniaIngresada
     );
 
