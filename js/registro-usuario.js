@@ -1,5 +1,3 @@
-const formulario = document.getElementById("form");
-
 const nombre = document.getElementById("nombre");
 const apellido = document.getElementById("apellido");
 const email = document.getElementById("email");
@@ -13,7 +11,9 @@ const errorApellido = document.getElementById("errorApellido");
 const errorEmail = document.getElementById("errorEmail");
 const errorNombreUsuario = document.getElementById("errorNombreDeUsuario");
 const errorContrasenia = document.getElementById("errorContrasenia");
-const errorRepetirContrasenia = document.getElementById("errorRepetirContrasenia");
+const errorRepetirContrasenia = document.getElementById(
+  "errorRepetirContrasenia"
+);
 
 function esSoloTextoConTildesYenies(texto) {
   if (texto.trim() === "") {
@@ -70,16 +70,20 @@ function validaContrasenia(contrasenia) {
     esNumero(x) && numeros++;
     esCaracterEspecial(x) && caracteresEspeciales++;
   }
-  
 
-  if (letras >= 2 && numeros >= 2 && caracteresEspeciales >= 2 && contrasenia.length >= 8) {
+  if (
+    letras >= 2 &&
+    numeros >= 2 &&
+    caracteresEspeciales >= 2 &&
+    contrasenia.length >= 8
+  ) {
     return true;
   }
   return false;
 }
 
 function validarRepetirContrasenia(contrasenia1, contrasenia2) {
-  //console.log(contrasenia1 + "\n" + contrasenia2)
+  console.log(contrasenia1 + "\n" + contrasenia2);
   return contrasenia1 === contrasenia2;
 }
 
@@ -133,10 +137,19 @@ function verificarTodosLosCampos(evento) {
     invalido = true;
   }
   btnConfirmar.disabled = invalido;
+  !invalido &&
+    btnConfirmar.addEventListener("click", guardarDatosEnLocalStorage);
 }
 
 // A cada formulario que esté entre corchetes, se lo va a controlar por cada cambio
-[nombre, apellido, email, nombreUsuario, contrasenia, repetirContrasenia].forEach((elemento) =>
+[
+  nombre,
+  apellido,
+  email,
+  nombreUsuario,
+  contrasenia,
+  repetirContrasenia,
+].forEach((elemento) =>
   elemento.addEventListener("input", verificarTodosLosCampos)
 );
 
@@ -177,14 +190,35 @@ contrasenia.addEventListener("input", (evento) => {
   if (validaContrasenia(evento.target.value)) {
     errorContrasenia.textContent = "";
   } else {
-    errorContrasenia.textContent = "Contraseña debe tener un mínimo de 8 caracteres. Mínimo 2 letras, 2 números y 2 caracteres especiales.";
+    errorContrasenia.textContent =
+      "Contraseña debe tener un mínimo de 8 caracteres. Mínimo 2 letras, 2 números y 2 caracteres especiales.";
   }
 });
 
 repetirContrasenia.addEventListener("input", (evento) => {
-  if (validarRepetirContrasenia(evento.target.value,contrasenia.value)) {
+  if (validarRepetirContrasenia(evento.target.value, contrasenia.value)) {
     errorRepetirContrasenia.textContent = "";
   } else {
     errorRepetirContrasenia.textContent = "Las contraseñas no coinciden.";
   }
 });
+
+function guardarDatosEnLocalStorage() {
+  let usuariosStorage = JSON.parse(localStorage.getItem("usuarios"));
+  console.log("Guardando datos", usuariosStorage);
+  let usuarios = [];
+  usuariosStorage?.forEach((u) => {
+    usuarios.push(u);
+  });
+  let nuevoUsuario = {
+    nombre: nombre.value,
+    apellido: apellido.value,
+    email: email.value,
+    nombreDeUsuario: nombreUsuario.value,
+    contrasenia: contrasenia.value, //Habría que guardar un hash(md5).
+  };
+  usuarios.push(nuevoUsuario);
+  localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+  //TODO: evitar que se repetira el usuario.
+}

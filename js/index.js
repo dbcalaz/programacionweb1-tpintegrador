@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const inputUsuario = document.getElementById("usuario");
-  const inputContrasenia = document.getElementById("contraseña");
+  const inputContrasenia = document.getElementById("contrasenia");
   const botonLogin = document.querySelector(".boton-login");
   const form = document.querySelector("form");
 
@@ -23,9 +23,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const nombreIngresado = inputUsuario.value.trim();
     const contraseniaIngresada = inputContrasenia.value.trim();
 
-    // Buscar usuario por nombreUsuario + contraseña
-    const usuarioEncontrado = usuarios.find(u =>
-      u.nombreUsuario === nombreIngresado && u.contrasenia === contraseniaIngresada
+    // Buscar usuario por nombreUsuario o email + contraseña
+    const usuarioEncontrado = usuarios.find(
+      (u) =>
+        (u.nombreDeUsuario === nombreIngresado || u.email === nombreIngresado) &&
+        u.contrasenia === contraseniaIngresada
     );
 
     if (usuarioEncontrado) {
