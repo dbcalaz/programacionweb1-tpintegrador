@@ -220,5 +220,8 @@ function guardarDatosEnLocalStorage() {
   usuarios.push(nuevoUsuario);
   localStorage.setItem("usuarios", JSON.stringify(usuarios));
 
+  window.location.replace("../index.html");
+
+
   //TODO: evitar que se repetira el usuario.
 }
