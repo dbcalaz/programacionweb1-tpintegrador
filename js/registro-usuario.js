@@ -4,12 +4,14 @@ const nombre = document.getElementById("nombre");
 const apellido = document.getElementById("apellido");
 const email = document.getElementById("email");
 const nombreUsuario = document.getElementById("nombreDeUsuario");
+const contrasenia = document.getElementById("contrasenia");
 const btnConfirmar = document.getElementById("btnConfirmar");
 
 const errorNombre = document.getElementById("errorNombre");
 const errorApellido = document.getElementById("errorApellido");
 const errorEmail = document.getElementById("errorEmail");
 const errorNombreUsuario = document.getElementById("errorNombreDeUsuario");
+const errorContrasenia = document.getElementById("errorContrasenia");
 
 function esSoloTextoConTildesYenies(texto) {
   if (texto.trim() === "") {
@@ -32,6 +34,46 @@ function validaLetrasYnumeros(texto) {
     return false;
   }
   return /^[a-z][a-z0-9]+$/.test(texto);
+}
+
+function esLetra(letra) {
+  if (letra.trim() === "") {
+    return false;
+  }
+  return /[a-zA-Z]/.test(letra);
+}
+
+function esNumero(numero) {
+  if (numero.trim() === "") {
+    return false;
+  }
+  return /[0-9]/.test(numero);
+}
+
+function esCaracterEspecial(caracterEspecial) {
+  if (caracterEspecial.trim() === "") {
+    return false;
+  }
+  return /[._%+-]/.test(caracterEspecial);
+}
+
+function validaContrasenia(contrasenia) {
+  let letras = 0;
+  let numeros = 0;
+  let caracteresEspeciales = 0;
+  let x;
+  for (let i = 0; i < contrasenia.length; i++) {
+    x = contrasenia.charAt(i);
+    esLetra(x) && letras++;
+    esNumero(x) && numeros++;
+    esCaracterEspecial(x) && caracteresEspeciales++;
+  }
+  console.log(contrasenia.length, letras, numeros, caracteresEspeciales);
+
+  if (letras >= 2 && numeros >= 2 && caracteresEspeciales >= 2 && contrasenia.length >= 8) {
+    return true;
+  }
+  return false;
 }
 
 /*
@@ -67,6 +109,7 @@ function limpiarErrores() {
   errorApellido.textContent = "";
   errorEmail.textContent = "";
   errorNombreUsuario.textContent = "";
+  errorContrasenia.textContent = "";
 }
 
 function verificarTodosLosCampos(evento) {
@@ -75,7 +118,8 @@ function verificarTodosLosCampos(evento) {
     !esSoloTextoConTildesYenies(nombre.value) ||
     !esSoloTextoConTildesYenies(apellido.value) ||
     !validarEmail(email.value) ||
-    !validaLetrasYnumeros(nombreUsuario.value)
+    !validaLetrasYnumeros(nombreUsuario.value) ||
+    !validaContrasenia(contrasenia.value)
   ) {
     invalido = true;
   }
@@ -83,7 +127,7 @@ function verificarTodosLosCampos(evento) {
 }
 
 // A cada formulario que esté entre corchetes, se lo va a controlar por cada cambio
-[nombre, apellido, email, nombreUsuario].forEach((elemento) =>
+[nombre, apellido, email, nombreUsuario, contrasenia].forEach((elemento) =>
   elemento.addEventListener("input", verificarTodosLosCampos)
 );
 
@@ -117,5 +161,13 @@ nombreUsuario.addEventListener("input", (evento) => {
     errorNombreUsuario.textContent = "";
   } else {
     errorNombreUsuario.textContent = "Nombre de usuario incorrecto";
+  }
+});
+
+contrasenia.addEventListener("input", (evento) => {
+  if (validaContrasenia(evento.target.value)) {
+    errorContrasenia.textContent = "";
+  } else {
+    errorContrasenia.textContent = "Contraseña debe tener un mínimo de 8 caracteres. Mínimo 2 letras, 2 números y 2 caracteres especiales.";
   }
 });
