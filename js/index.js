@@ -26,7 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Buscar usuario por nombreUsuario o email + contraseña
     const usuarioEncontrado = usuarios.find(
       (u) =>
-        (u.nombreDeUsuario === nombreIngresado || u.email === nombreIngresado) &&
+        // TODO: se puede hacer login con el mail?
+        (u.nombreDeUsuario === nombreIngresado  /*|| u.email === nombreIngresado*/) &&
         u.contrasenia === contraseniaIngresada
     );
 
