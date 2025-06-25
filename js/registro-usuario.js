@@ -1,7 +1,7 @@
 const nombre = document.getElementById("nombre");
 const apellido = document.getElementById("apellido");
 const email = document.getElementById("email");
-const nombreUsuario = document.getElementById("nombreDeUsuario");
+const nombreDeUsuario = document.getElementById("nombreDeUsuario");
 const contrasenia = document.getElementById("contrasenia");
 const repetirContrasenia = document.getElementById("repetirContrasenia");
 const metodoPagoRadios = document.getElementsByName("metodoPago");
@@ -27,11 +27,12 @@ const errorNumeroTarjeta = document.getElementById("errorNumeroTarjeta");
 const errorClaveTarjeta = document.getElementById("errorClaveTarjeta");
 
 function esSoloTextoConTildesYenies(texto) {
-  if (texto.trim() === "") {
+  
+  if (texto.trim().toLowerCase() === "") {
     return false;
   }
 
-  return /^[a-zA-ZáéióúñÁÉÍÓÚÑ]+$/.test(texto);
+  return /^[a-zA-ZáéióúñÁÉÍÓÚÑ\s]+$/.test(texto);
 }
 
 function validarEmail(email) {
@@ -43,10 +44,10 @@ function validarEmail(email) {
 }
 
 function validaLetrasYnumeros(texto) {
-  if (texto.trim() === "") {
+  if (texto.trim().toLowerCase() === "") {
     return false;
   }
-  return /^[a-z][a-z0-9]+$/.test(texto);
+  return /^[a-zA-Z][a-zA-Z0-9\s]+$/.test(texto);
 }
 
 function esLetra(letra) {
@@ -233,7 +234,7 @@ function verificarTodosLosCampos(evento) {
     !esSoloTextoConTildesYenies(nombre.value) ||
     !esSoloTextoConTildesYenies(apellido.value) ||
     !validarEmail(email.value) ||
-    !validaLetrasYnumeros(nombreUsuario.value) ||
+    !validaLetrasYnumeros(nombreDeUsuario.value) ||
     !validaContrasenia(contrasenia.value) ||
     !validarRepetirContrasenia(contrasenia.value, repetirContrasenia.value) ||
     !validaNumeroDeTarjeta(numeroTarjeta.value) ||
@@ -243,15 +244,13 @@ function verificarTodosLosCampos(evento) {
     invalido = true;
   }
 
-  console.log("peron", invalido);
-
   if (!invalido) {
     let usuariosStorage = JSON.parse(localStorage.getItem("usuarios"));
     console.log(usuariosStorage);
     let encontrado = false;
     usuariosStorage?.forEach((u) => {
       console.log(u.nombreDeUsuario);
-      if (u.nombreDeUsuario === nombreUsuario.value) {
+      if (u.nombreDeUsuario === nombreDeUsuario.value) {
         encontrado = true;
       }
     });
@@ -267,7 +266,7 @@ function verificarTodosLosCampos(evento) {
   nombre,
   apellido,
   email,
-  nombreUsuario,
+  nombreDeUsuario,
   contrasenia,
   repetirContrasenia,
   numeroTarjeta,
@@ -306,7 +305,7 @@ email.addEventListener("input", (evento) => {
   }
 });
 
-nombreUsuario.addEventListener("input", (evento) => {
+nombreDeUsuario.addEventListener("input", (evento) => {
   if (validaLetrasYnumeros(evento.target.value)) {
     errorNombreUsuario.textContent = "";
   } else {
@@ -319,7 +318,7 @@ contrasenia.addEventListener("input", (evento) => {
     errorContrasenia.textContent = "";
   } else {
     errorContrasenia.textContent =
-      "Contraseña debe tener un mínimo de 8 caracteres. Mínimo 2 letras, 2 números y 2 caracteres especiales.";
+      "Mínimo de 8 caracteres (2 letras, 2 números y 2 caracteres especiales).";
   }
 });
 
@@ -368,7 +367,7 @@ function guardarDatosEnLocalStorage() {
     nombre: nombre.value,
     apellido: apellido.value,
     email: email.value,
-    nombreDeUsuario: nombreUsuario.value,
+    nombreDeUsuario: nombreDeUsuario.value,
     contrasenia: contrasenia.value, //Habría que guardar un hash(md5).
     medioDePago: {
       tarjeta: {
