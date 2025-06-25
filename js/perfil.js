@@ -1,3 +1,5 @@
+//const { jsxs } = require("react/jsx-runtime");
+
 document.addEventListener("DOMContentLoaded", () => {
   const nombreDeUsuario = document.getElementById("nombreDeUsuario");
   const emailDeUsuario = document.querySelector(".e-mail");
@@ -21,13 +23,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const errorCupon = document.getElementById("errorCupon");
 
   let usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
-  let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-
-  console.log(usuarios);
+  let usuarios = JSON.parse(localStorage.getItem("usuarios"));
+  console.log("usuario logueado:" , usuarioActivo);
 
   if (usuarioActivo) {
     nombreDeUsuario.textContent = usuarioActivo.nombreDeUsuario;
     emailDeUsuario.textContent = usuarioActivo.email;
+    tarjetaRadio.checked = usuarioActivo.medioDePago?.tarjeta.seleccionado;
+    cuponRadio.checked = usuarioActivo.medioDePago?.cupon.seleccionado;
+    transferenciaRadio.checked = usuarioActivo.medioDePago?.transferencia.seleccionado;
+    inputTarjeta.value = usuarioActivo.medioDePago?.tarjeta.numero;
+    inputClave.value = usuarioActivo.medioDePago?.tarjeta.clave;
   }
 
   function validarContrasenia(valor) {
@@ -178,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
   botonCancelar.addEventListener("click", e => {
     e.preventDefault();
     if (confirm("¿Estás seguro de que deseas cancelar la suscripción?")) {
-      usuarios = usuarios.filter(u => u.email !== usuarioActivo.email);
+      usuarios = usuarios.filter(u => u.nombreDeUsuario !== usuarioActivo.nombreDeUsuario);
       localStorage.setItem("usuarios", JSON.stringify(usuarios));
       localStorage.removeItem("usuarioActivo");
       window.location.href = "./index.html";
