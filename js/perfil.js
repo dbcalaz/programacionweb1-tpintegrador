@@ -23,6 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
   let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
+  console.log(usuarios);
+
   if (usuarioActivo) {
     nombreDeUsuario.textContent = usuarioActivo.nombreDeUsuario;
     emailDeUsuario.textContent = usuarioActivo.email;

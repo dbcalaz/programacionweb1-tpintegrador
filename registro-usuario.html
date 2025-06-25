@@ -96,7 +96,7 @@
 
         <article class="metodo-pago">
           <label>
-            <input type="radio" name="metodoPago" value="tarjeta" />
+            <input type="radio" name="metodoPago" value="tarjeta" id="radioTarjeta"/>
             Tarjeta de crédito
           </label>
           <div class="datos-tarjeta">
@@ -120,6 +120,41 @@
             <p id="errorClaveTarjeta" class="errorTarjeta"></p>
           </div>
         </article>
+
+        <article class="metodo-pago">
+          <label
+            ><input
+              type="radio"
+              name="metodoPago"
+              
+              value="cupon"
+              id="radioCupon"
+            />
+            Cupón de pago</label
+          >
+          <div class="opcion-checkbox">
+            <label><input type="checkbox" id="pagoFacil"/> Pago fácil</label>
+            <label><input type="checkbox" id="rapiPago"/> RapiPago</label>
+          </div>
+        </article>
+
+        <article class="metodo-pago">
+          <label>
+            <input
+              type="radio"
+              name="metodoPago"
+              
+              value="transferencia"
+              id="radioTransferencia"
+            />
+            Transferencia bancaria
+          </label>
+          <p class="cbu">CBU: 0000003100055994120766</p>
+        </article>
+
+        <div class="input-con-error">
+          <p id="errorMetodoPago" class="error"></p>
+        </div>
       </section>
     </div>
     <div class="botones">
