@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!validarRepetirContrasenia(nueva, repetir)) {
         errorContrasenia.textContent = "Las contraseñas no coinciden.";
       } else if (!validarContrasenia(nueva)) {
-        errorContrasenia.textContent = "Debe tener al menos 8 caracteres, 2 letras, 2 números y 2 símbolos.";
+        errorContrasenia.textContent = "Mín. 8 caracteres: 2 letras, 2 números y 2 símbolos";
       } else {
         contraseniaValida = true;
       }
