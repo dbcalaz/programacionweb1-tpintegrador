@@ -317,7 +317,7 @@ contrasenia.addEventListener("input", (evento) => {
     errorContrasenia.textContent = "";
   } else {
     errorContrasenia.textContent =
-      "Mínimo de 8 caracteres (2 letras, 2 números y 2 caracteres especiales).";
+      "Mín. 8 caracteres: 2 letras, 2 números y 2 símbolos";
   }
 });
 
