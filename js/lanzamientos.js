@@ -66,7 +66,7 @@ function crearLanzamiento(lanzamiento) {
   return divFoto;
 }
 
-// Renderizar lanzamientos por categoría
+
 for (let i = 0; i < lanzamientos.length; i++) {
   let lanzamiento = lanzamientos[i];
   const descripcion = lanzamiento.descripcion.toLowerCase();

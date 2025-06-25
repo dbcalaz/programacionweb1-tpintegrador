@@ -1,5 +1,3 @@
-//const { jsxs } = require("react/jsx-runtime");
-
 document.addEventListener("DOMContentLoaded", () => {
   const nombreDeUsuario = document.getElementById("nombreDeUsuario");
   const emailDeUsuario = document.querySelector(".e-mail");
@@ -25,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
   let usuarios = JSON.parse(localStorage.getItem("usuarios"));
-  console.log("usuario logueado:" , usuarioActivo);
 
   if (usuarioActivo) {
     nombreDeUsuario.textContent = usuarioActivo.nombreDeUsuario;
@@ -132,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
     botonGuardar.disabled = !(contraseniaValida || metodoValido);
   }
 
-  // Escuchar cambios para validar
+  
   inputNueva.addEventListener("input", validarFormulario);
   inputRepetir.addEventListener("input", validarFormulario);
   radioTarjeta.addEventListener("change", validarFormulario);
@@ -197,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.removeItem("usuarioActivo");
   });
 
-  // Mostrar método de pago previamente guardado
+  
   if (usuarioActivo && usuarioActivo.metodoPago) {
     const metodo = usuarioActivo.metodoPago.tipo;
 
@@ -219,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  validarFormulario(); // Llamar al inicio para habilitar/deshabilitar correctamente el botón
+  validarFormulario();
 });
 
 const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));

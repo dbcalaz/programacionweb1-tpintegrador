@@ -106,7 +106,7 @@ function validaNumeroDeTarjeta(numeroTarjeta) {
   const LARGO_TARJETA = 16;
   let x;
   let sumatoria = 0;
-  console.log("peron");
+ 
   if (numeroTarjeta.length !== LARGO_TARJETA) {
     return false;
   }
@@ -119,7 +119,6 @@ function validaNumeroDeTarjeta(numeroTarjeta) {
     let num = parseInt(x);
 
     sumatoria += num;
-    console.log(sumatoria, num);
   }
   if (sumatoria % 2 === 1) {
     return true;
@@ -133,7 +132,7 @@ function validarClaveTarjeta(claveTarjeta) {
     return true;
   }
   const LARGO_CLAVE = 3;
-  console.log(claveTarjeta, claveTarjeta.length);
+  
   if (claveTarjeta.length !== LARGO_CLAVE || claveTarjeta.includes("0")) {
     return false;
   }
@@ -142,7 +141,6 @@ function validarClaveTarjeta(claveTarjeta) {
 
 function esMetodoTarjetaSeleccionado() {
   if (radioTarjeta.checked) {
-    console.log("Estoy usando tarjeta");
     return true;
   }
   return false;
@@ -163,7 +161,6 @@ function actualizarEstadoCamposTarjeta() {
 
 function esMetodoCuponSeleccionado() {
   if (radioCupon.checked) {
-    console.log("Estoy usando cupón");
     return true;
   }
   return false;
@@ -245,10 +242,9 @@ function verificarTodosLosCampos(evento) {
 
   if (!invalido) {
     let usuariosStorage = JSON.parse(localStorage.getItem("usuarios"));
-    console.log(usuariosStorage);
+   
     let encontrado = false;
     usuariosStorage?.forEach((u) => {
-      console.log(u.nombreDeUsuario);
       if (u.nombreDeUsuario === nombreDeUsuario.value) {
         encontrado = true;
       }
@@ -280,7 +276,6 @@ function verificarTodosLosCampos(evento) {
 );
 
 nombre.addEventListener("input", (evento) => {
-  console.log("Validando nombre");
   if (esSoloTextoConTildesYenies(evento.target.value)) {
     errorNombre.textContent = "";
   } else {
@@ -357,7 +352,6 @@ metodoPagoRadios.forEach((radio) => {
 
 function guardarDatosEnLocalStorage() {
   let usuariosStorage = JSON.parse(localStorage.getItem("usuarios"));
-  console.log("Guardando datos", usuariosStorage);
   let usuarios = [];
   usuariosStorage?.forEach((u) => {
     usuarios.push(u);
@@ -389,5 +383,4 @@ function guardarDatosEnLocalStorage() {
 
   window.location.replace("./index.html");
 
-  //TODO: evitar que se repetira el usuario.
 }
