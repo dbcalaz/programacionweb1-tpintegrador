@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const botonGuardar = document.querySelector(".boton-guardar");
   const botonCancelar = document.querySelector(".boton-cancelar");
   const cerrarSesion = document.querySelector(".boton-cerrar");
+  const contrasenia = document.getElementById("contrasenia");
 
   const tarjetaRadio = document.getElementById("tarjeta-credito");
   const cuponRadio = document.getElementById("cuponPago");
@@ -29,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (usuarioActivo) {
     nombreDeUsuario.textContent = usuarioActivo.nombreDeUsuario;
     emailDeUsuario.textContent = usuarioActivo.email;
+    contrasenia.value = usuarioActivo.contrasenia;
     tarjetaRadio.checked = usuarioActivo.medioDePago?.tarjeta.seleccionado;
     cuponRadio.checked = usuarioActivo.medioDePago?.cupon.seleccionado;
     transferenciaRadio.checked = usuarioActivo.medioDePago?.transferencia.seleccionado;
