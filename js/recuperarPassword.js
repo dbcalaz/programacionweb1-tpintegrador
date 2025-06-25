@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const usuarioIngresado = inputUsuario.value.trim();
 
     const usuarioEncontrado = usuarios.find(u =>
-      u.email === emailIngresado && u.nombreUsuario === usuarioIngresado
+      u.email === emailIngresado && u.nombreDeUsuario === usuarioIngresado
     );
 
     if (usuarioEncontrado) {
