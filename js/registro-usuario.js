@@ -27,7 +27,6 @@ const errorNumeroTarjeta = document.getElementById("errorNumeroTarjeta");
 const errorClaveTarjeta = document.getElementById("errorClaveTarjeta");
 
 function esSoloTextoConTildesYenies(texto) {
-  
   if (texto.trim().toLowerCase() === "") {
     return false;
   }

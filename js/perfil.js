@@ -10,9 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const cerrarSesion = document.querySelector(".boton-cerrar");
   const contrasenia = document.getElementById("contrasenia");
 
-  const tarjetaRadio = document.getElementById("tarjeta-credito");
-  const cuponRadio = document.getElementById("cuponPago");
-  const transferenciaRadio = document.getElementById("transferenciaBancaria");
+  const radioTarjeta = document.getElementById("tarjeta-credito");
+  const radioCupon = document.getElementById("cuponPago");
+  const radioTransferencia = document.getElementById("transferenciaBancaria");
 
   const inputTarjeta = document.getElementById("numeroTarjeta");
   const inputClave = document.getElementById("claveTarjeta");
@@ -31,9 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
     nombreDeUsuario.textContent = usuarioActivo.nombreDeUsuario;
     emailDeUsuario.textContent = usuarioActivo.email;
     contrasenia.value = usuarioActivo.contrasenia;
-    tarjetaRadio.checked = usuarioActivo.medioDePago?.tarjeta.seleccionado;
-    cuponRadio.checked = usuarioActivo.medioDePago?.cupon.seleccionado;
-    transferenciaRadio.checked = usuarioActivo.medioDePago?.transferencia.seleccionado;
+    radioTarjeta.checked = usuarioActivo.medioDePago?.tarjeta.seleccionado;
+    radioCupon.checked = usuarioActivo.medioDePago?.cupon.seleccionado;
+    radioTransferencia.checked = usuarioActivo.medioDePago?.transferencia.seleccionado;
     inputTarjeta.value = usuarioActivo.medioDePago?.tarjeta.numero;
     inputClave.value = usuarioActivo.medioDePago?.tarjeta.clave;
   }
@@ -121,11 +121,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let metodoValido = false;
 
-    if (tarjetaRadio.checked) {
+    if (radioTarjeta.checked) {
       metodoValido = validarTarjetaYClave();
-    } else if (cuponRadio.checked) {
+    } else if (radioCupon.checked) {
       metodoValido = validarCupon();
-    } else if (transferenciaRadio.checked) {
+    } else if (radioTransferencia.checked) {
       metodoValido = true;
     }
 
@@ -135,9 +135,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Escuchar cambios para validar
   inputNueva.addEventListener("input", validarFormulario);
   inputRepetir.addEventListener("input", validarFormulario);
-  tarjetaRadio.addEventListener("change", validarFormulario);
-  cuponRadio.addEventListener("change", validarFormulario);
-  transferenciaRadio.addEventListener("change", validarFormulario);
+  radioTarjeta.addEventListener("change", validarFormulario);
+  radioCupon.addEventListener("change", validarFormulario);
+  radioTransferencia.addEventListener("change", validarFormulario);
   inputTarjeta.addEventListener("input", validarFormulario);
   inputClave.addEventListener("input", validarFormulario);
   checkboxesCupon.forEach(chk => chk.addEventListener("change", validarFormulario));
@@ -153,13 +153,13 @@ document.addEventListener("DOMContentLoaded", () => {
       usuarioActivo.contrasenia = nueva;
     }
 
-    if (tarjetaRadio.checked) {
+    if (radioTarjeta.checked) {
       usuarioActivo.metodoPago = {
         tipo: "tarjeta",
         numero: inputTarjeta.value.trim().replace(/\s+/g, ""),
         clave: inputClave.value.trim()
       };
-    } else if (cuponRadio.checked) {
+    } else if (radioCupon.checked) {
       const seleccionados = Array.from(checkboxesCupon)
         .filter(chk => chk.checked)
         .map(chk => chk.parentElement.textContent.trim());
@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
         tipo: "cupon",
         seleccionados
       };
-    } else if (transferenciaRadio.checked) {
+    } else if (radioTransferencia.checked) {
       usuarioActivo.metodoPago = {
         tipo: "transferencia",
         cbu: "2183909411100018971375"
@@ -202,11 +202,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const metodo = usuarioActivo.metodoPago.tipo;
 
     if (metodo === "tarjeta") {
-      tarjetaRadio.checked = true;
+      radioTarjeta.checked = true;
       inputTarjeta.value = usuarioActivo.metodoPago.numero || "";
       inputClave.value = usuarioActivo.metodoPago.clave || "";
     } else if (metodo === "cupon") {
-      cuponRadio.checked = true;
+      radioCupon.checked = true;
       const seleccionados = usuarioActivo.metodoPago.seleccionados || [];
       checkboxesCupon.forEach(chk => {
         const texto = chk.parentElement.textContent.trim();
@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     } else if (metodo === "transferencia") {
-      transferenciaRadio.checked = true;
+      radioTransferencia.checked = true;
     }
   }
 
