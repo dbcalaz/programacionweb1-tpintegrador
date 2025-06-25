@@ -7,6 +7,11 @@ const repetirContrasenia = document.getElementById("repetirContrasenia");
 const metodoPagoRadios = document.getElementsByName("metodoPago");
 const numeroTarjeta = document.getElementById("numeroTarjeta");
 const claveTarjeta = document.getElementById("claveTarjeta");
+const radioTarjeta = document.getElementById("radioTarjeta");
+const radioCupon = document.getElementById("radioCupon");
+const radioTransferencia = document.getElementById("radioTransferencia");
+const checkPagoFacil = document.getElementById("pagoFacil");
+const checkRapiPago = document.getElementById("rapiPago");
 const btnConfirmar = document.getElementById("btnConfirmar");
 
 const errorNombre = document.getElementById("errorNombre");
@@ -94,6 +99,10 @@ function validarRepetirContrasenia(contrasenia1, contrasenia2) {
 }
 
 function validaNumeroDeTarjeta(numeroTarjeta) {
+  //Si es método que eligió no es tarjeta que me de siempre bien
+  if (!esMetodoTarjetaSeleccionado()) {
+    return true;
+  }
   const LARGO_TARJETA = 16;
   let x;
   let sumatoria = 0;
@@ -118,15 +127,66 @@ function validaNumeroDeTarjeta(numeroTarjeta) {
   return false;
 }
 
-function validarClaveTarjeta(claveTarjeta){
+function validarClaveTarjeta(claveTarjeta) {
+  //Si es método que eligió no es tarjeta que me de siempre bien
+  if (!esMetodoTarjetaSeleccionado()) {
+    return true;
+  }
   const LARGO_CLAVE = 3;
   console.log(claveTarjeta, claveTarjeta.length);
-  if(claveTarjeta.length !== LARGO_CLAVE || claveTarjeta.includes("0")){
+  if (claveTarjeta.length !== LARGO_CLAVE || claveTarjeta.includes("0")) {
     return false;
   }
   return true;
 }
 
+function esMetodoTarjetaSeleccionado() {
+  if (radioTarjeta.checked) {
+    console.log("Estoy usando tarjeta");
+    return true;
+  }
+  return false;
+}
+
+function actualizarEstadoCamposTarjeta() {
+  const activa = esMetodoTarjetaSeleccionado();
+  numeroTarjeta.disabled = !activa;
+  claveTarjeta.disabled = !activa;
+
+  if (!activa) {
+    numeroTarjeta.value = "";
+    claveTarjeta.value = "";
+    errorNumeroTarjeta.textContent = "";
+    errorClaveTarjeta.textContent = "";
+  }
+}
+
+function esMetodoCuponSeleccionado() {
+  if (radioCupon.checked) {
+    console.log("Estoy usando cupón");
+    return true;
+  }
+  return false;
+}
+
+function actualizarEstadoCamposCupon() {
+  const activa = esMetodoCuponSeleccionado();
+  checkPagoFacil.disabled = !activa;
+  checkRapiPago.disabled = !activa;
+
+  if (!activa) {
+    checkPagoFacil.value = "";
+    checkRapiPago.value = "";
+    checkPagoFacil.textContent = "";
+    checkRapiPago.textContent = "";
+  }
+}
+
+function validarMetodoPagoSeleccionado() {
+  return (
+    radioTarjeta.checked || radioCupon.checked || radioTransferencia.checked
+  );
+}
 /*
     Machete sobre regexp:
     ^ = comienza con (pattern/patrón) por ejemplo: ^[a-f]  valida que empiece con a,b,c,d,e o f
@@ -177,13 +237,29 @@ function verificarTodosLosCampos(evento) {
     !validaContrasenia(contrasenia.value) ||
     !validarRepetirContrasenia(contrasenia.value, repetirContrasenia.value) ||
     !validaNumeroDeTarjeta(numeroTarjeta.value) ||
-    !validarClaveTarjeta(claveTarjeta.value)
+    !validarClaveTarjeta(claveTarjeta.value) ||
+    !validarMetodoPagoSeleccionado()
   ) {
     invalido = true;
   }
-  btnConfirmar.disabled = invalido;
-  !invalido &&
-    btnConfirmar.addEventListener("click", guardarDatosEnLocalStorage);
+
+  console.log("peron", invalido);
+
+  if (!invalido) {
+    let usuariosStorage = JSON.parse(localStorage.getItem("usuarios"));
+    console.log(usuariosStorage);
+    let encontrado = false;
+    usuariosStorage?.forEach((u) => {
+      console.log(u.nombreDeUsuario);
+      if (u.nombreDeUsuario === nombreUsuario.value) {
+        encontrado = true;
+      }
+    });
+    if (!encontrado) {
+      btnConfirmar.addEventListener("click", guardarDatosEnLocalStorage);
+      btnConfirmar.disabled = invalido;
+    }
+  }
 }
 
 // A cada formulario que esté entre corchetes, se lo va a controlar por cada cambio
@@ -195,7 +271,12 @@ function verificarTodosLosCampos(evento) {
   contrasenia,
   repetirContrasenia,
   numeroTarjeta,
-  claveTarjeta
+  claveTarjeta,
+  radioTarjeta,
+  radioCupon,
+  radioTransferencia,
+  checkPagoFacil,
+  checkRapiPago,
 ].forEach((elemento) =>
   elemento.addEventListener("input", verificarTodosLosCampos)
 );
@@ -268,6 +349,14 @@ claveTarjeta.addEventListener("input", (evento) => {
   }
 });
 
+metodoPagoRadios.forEach((radio) => {
+  radio.addEventListener("change", () => {
+    errorMetodoPago.textContent = "";
+    actualizarEstadoCamposTarjeta();
+    actualizarEstadoCamposCupon();
+  });
+});
+
 function guardarDatosEnLocalStorage() {
   let usuariosStorage = JSON.parse(localStorage.getItem("usuarios"));
   console.log("Guardando datos", usuariosStorage);
@@ -281,6 +370,21 @@ function guardarDatosEnLocalStorage() {
     email: email.value,
     nombreDeUsuario: nombreUsuario.value,
     contrasenia: contrasenia.value, //Habría que guardar un hash(md5).
+    medioDePago: {
+      tarjeta: {
+        numero: numeroTarjeta.value || "",
+        clave: claveTarjeta.value || "",
+        seleccionado: radioTarjeta.checked,
+      },
+      cupon: {
+        pagoFacil: checkPagoFacil.checked,
+        rapiPago: checkRapiPago.checked,
+        seleccionado: radioCupon.checked,
+      },
+      transferencia: {
+        seleccionado: radioTransferencia.checked,
+      },
+    },
   };
   usuarios.push(nuevoUsuario);
   localStorage.setItem("usuarios", JSON.stringify(usuarios));
