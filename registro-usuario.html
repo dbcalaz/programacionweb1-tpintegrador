@@ -7,77 +7,121 @@
     <link rel="stylesheet" href="./styles/perfil.css" />
   </head>
   <body>
-    <section class="FormularioContactoGlobal">
-      <form action="./index.html" id="form">
-        <article class="FormularioContacto">
-          <label for="nombre">Nombre</label>
-          <div id="contenedorError" class="input-con-error">
-            <input type="text" id="nombre" name="nombre" placeholder="Nombre" />
-            <p id="errorNombre" class="error"></p>
-          </div>
-        </article>
-        <article class="FormularioContacto">
-          <label for="apellido">Apellido</label>
-          <div class="input-con-error">
+    <header class="Registrarse">
+      <h1>Registrarse</h1>
+    </header>
+
+    <div class="ContenedorGeneral">
+      <!-- Sección izquierda: Formulario de usuario -->
+      <section class="FormularioContactoGlobal">
+        <form action="./index.html" id="form">
+          <article class="FormularioContacto">
+            <label for="nombre">Nombre</label>
+            <div id="contenedorError" class="input-con-error">
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                placeholder="Nombre"
+              />
+              <p id="errorNombre" class="error"></p>
+            </div>
+          </article>
+          <article class="FormularioContacto">
+            <label for="apellido">Apellido</label>
+            <div class="input-con-error">
+              <input
+                type="text"
+                id="apellido"
+                name="apellido"
+                placeholder="Ingrese apellido"
+              />
+              <p id="errorApellido" class="error"></p>
+            </div>
+          </article>
+          <article class="FormularioContacto">
+            <label for="email">E-mail</label>
+            <div class="input-con-error">
+              <input
+                type="text"
+                id="email"
+                name="email"
+                placeholder="Ingrese email"
+              />
+              <p id="errorEmail" class="error"></p>
+            </div>
+          </article>
+          <article class="FormularioContacto">
+            <label for="nombreDeUsuario">Nombre de usuario</label>
+            <div class="input-con-error">
+              <input
+                type="text"
+                id="nombreDeUsuario"
+                name="nombreDeUsuario"
+                placeholder="Nombre de usuario"
+              />
+              <p id="errorNombreDeUsuario" class="error"></p>
+            </div>
+          </article>
+          <article class="FormularioContacto">
+            <label for="contrasenia">Contraseña</label>
+            <div class="input-con-error">
+              <input
+                type="password"
+                id="contrasenia"
+                name="contrasenia"
+                placeholder="Contraseña"
+              />
+              <p id="errorContrasenia" class="error"></p>
+            </div>
+          </article>
+          <article class="FormularioContacto">
+            <label for="repetirContrasenia">Repetir contraseña</label>
+            <div class="input-con-error">
+              <input
+                type="password"
+                id="repetirContrasenia"
+                name="repetirContrasenia"
+                placeholder="Repetir contraseña"
+              />
+              <p id="errorRepetirContrasenia" class="error"></p>
+            </div>
+          </article>
+        </form>
+      </section>
+
+      <!-- Sección derecha: Métodos de pago -->
+      <section class="MetodoPagoGlobal">
+        <p class="seccion-titulo">Método de pago</p>
+
+        <article class="metodo-pago">
+          <label>
+            <input type="radio" name="metodoPago" value="tarjeta" />
+            Tarjeta de crédito
+          </label>
+          <div class="datos-tarjeta">
             <input
-              type="text"
-              id="apellido"
-              name="apellido"
-              placeholder="Ingrese apellido"
+              type="number"
+              name="numeroTarjeta"
+              class="datos-tarjeta"
+              id="numeroTarjeta"
+              placeholder="Número de tarjeta"
             />
-            <p id="errorApellido" class="error"></p>
-          </div>
-        </article>
-        <article class="FormularioContacto">
-          <label for="email">E-mail</label>
-          <div class="input-con-error">
             <input
-              type="text"
-              id="email"
-              name="email"
-              placeholder="Ingrese email"
+              type="number"
+              class="datos-tarjeta"
+              id="claveTarjeta"
+              name="Codigo"
+              placeholder="XXX"
             />
-            <p id="errorEmail" class="error"></p>
           </div>
-        </article>
-        <article class="FormularioContacto">
-          <label for="nombreDeUsuario">Nombre de usuario</label>
           <div class="input-con-error">
-            <input
-              type="text"
-              id="nombreDeUsuario"
-              name="nombreDeUsuario"
-              placeholder="Nombre de usuario"
-            />
-            <p id="errorNombreDeUsuario" class="error"></p>
+            <p id="errorNumeroTarjeta" class="errorTarjeta"></p>
+            <p id="errorClaveTarjeta" class="errorTarjeta"></p>
           </div>
         </article>
-        <article class="FormularioContacto">
-          <label for="contrasenia">Contraseña</label>
-          <div class="input-con-error">
-            <input
-              type="password"
-              id="contrasenia"
-              name="contrasenia"
-              placeholder="Contraseña"
-            />
-            <p id="errorContrasenia" class="error"></p>
-          </div>
-        </article>
-        <article class="FormularioContacto">
-          <label for="repetirContrasenia">Repetir contraseña</label>
-          <div class="input-con-error">
-            <input
-              type="password"
-              id="repetirContrasenia"
-              name="repetirContrasenia"
-              placeholder="Repetir contraseña"
-            />
-            <p id="errorRepetirContrasenia" class="error"></p>
-          </div>
-        </article>
-      </form>
-    </section>
+      </section>
+    </div>
     <div class="botones">
       <button
         class="boton boton-guardar"

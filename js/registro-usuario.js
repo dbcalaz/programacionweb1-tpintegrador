@@ -4,6 +4,9 @@ const email = document.getElementById("email");
 const nombreUsuario = document.getElementById("nombreDeUsuario");
 const contrasenia = document.getElementById("contrasenia");
 const repetirContrasenia = document.getElementById("repetirContrasenia");
+const metodoPagoRadios = document.getElementsByName("metodoPago");
+const numeroTarjeta = document.getElementById("numeroTarjeta");
+const claveTarjeta = document.getElementById("claveTarjeta");
 const btnConfirmar = document.getElementById("btnConfirmar");
 
 const errorNombre = document.getElementById("errorNombre");
@@ -14,6 +17,9 @@ const errorContrasenia = document.getElementById("errorContrasenia");
 const errorRepetirContrasenia = document.getElementById(
   "errorRepetirContrasenia"
 );
+const errorMetodoPago = document.getElementById("errorMetodoPago");
+const errorNumeroTarjeta = document.getElementById("errorNumeroTarjeta");
+const errorClaveTarjeta = document.getElementById("errorClaveTarjeta");
 
 function esSoloTextoConTildesYenies(texto) {
   if (texto.trim() === "") {
@@ -83,8 +89,42 @@ function validaContrasenia(contrasenia) {
 }
 
 function validarRepetirContrasenia(contrasenia1, contrasenia2) {
-  console.log(contrasenia1 + "\n" + contrasenia2);
+  // console.log(contrasenia1 + "\n" + contrasenia2);
   return contrasenia1 === contrasenia2;
+}
+
+function validaNumeroDeTarjeta(numeroTarjeta) {
+  const LARGO_TARJETA = 16;
+  let x;
+  let sumatoria = 0;
+  console.log("peron");
+  if (numeroTarjeta.length !== LARGO_TARJETA) {
+    return false;
+  }
+
+  for (let i = 0; i < LARGO_TARJETA; i++) {
+    x = numeroTarjeta.charAt(i);
+    if (!esNumero(x)) {
+      return false;
+    }
+    let num = parseInt(x);
+
+    sumatoria += num;
+    console.log(sumatoria, num);
+  }
+  if (sumatoria % 2 === 1) {
+    return true;
+  }
+  return false;
+}
+
+function validarClaveTarjeta(claveTarjeta){
+  const LARGO_CLAVE = 3;
+  console.log(claveTarjeta, claveTarjeta.length);
+  if(claveTarjeta.length !== LARGO_CLAVE || claveTarjeta.includes("0")){
+    return false;
+  }
+  return true;
 }
 
 /*
@@ -122,6 +162,9 @@ function limpiarErrores() {
   errorNombreUsuario.textContent = "";
   errorContrasenia.textContent = "";
   errorRepetirContrasenia.textContent = "";
+  errorMetodoPago.textContent = "";
+  errorNumeroTarjeta.textContent = "";
+  errorClaveTarjeta.textContent = "";
 }
 
 function verificarTodosLosCampos(evento) {
@@ -132,7 +175,9 @@ function verificarTodosLosCampos(evento) {
     !validarEmail(email.value) ||
     !validaLetrasYnumeros(nombreUsuario.value) ||
     !validaContrasenia(contrasenia.value) ||
-    !validarRepetirContrasenia(contrasenia.value, repetirContrasenia.value)
+    !validarRepetirContrasenia(contrasenia.value, repetirContrasenia.value) ||
+    !validaNumeroDeTarjeta(numeroTarjeta.value) ||
+    !validarClaveTarjeta(claveTarjeta.value)
   ) {
     invalido = true;
   }
@@ -149,6 +194,8 @@ function verificarTodosLosCampos(evento) {
   nombreUsuario,
   contrasenia,
   repetirContrasenia,
+  numeroTarjeta,
+  claveTarjeta
 ].forEach((elemento) =>
   elemento.addEventListener("input", verificarTodosLosCampos)
 );
@@ -203,6 +250,24 @@ repetirContrasenia.addEventListener("input", (evento) => {
   }
 });
 
+numeroTarjeta.addEventListener("input", (evento) => {
+  if (validaNumeroDeTarjeta(evento.target.value)) {
+    errorNumeroTarjeta.textContent = "";
+  } else {
+    errorNumeroTarjeta.textContent =
+      "Los números de la tarjeta no son válidos o superó la cantidad de números posibles.";
+  }
+});
+
+claveTarjeta.addEventListener("input", (evento) => {
+  if (validarClaveTarjeta(evento.target.value)) {
+    errorClaveTarjeta.textContent = "";
+  } else {
+    errorClaveTarjeta.textContent =
+      "La clave no puede contener ningún cero o superó el largo permitido";
+  }
+});
+
 function guardarDatosEnLocalStorage() {
   let usuariosStorage = JSON.parse(localStorage.getItem("usuarios"));
   console.log("Guardando datos", usuariosStorage);
@@ -221,7 +286,6 @@ function guardarDatosEnLocalStorage() {
   localStorage.setItem("usuarios", JSON.stringify(usuarios));
 
   window.location.replace("./index.html");
-
 
   //TODO: evitar que se repetira el usuario.
 }
