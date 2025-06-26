@@ -51,7 +51,7 @@ function filtrarSeries() {
   const categoria = selectCategoria.value.toLowerCase();
 
   const filtradas = series.filter(function (serie) {
-    const coincideNombre = serie.titulo.toLowerCase().startsWith(nombre);
+    const coincideNombre = serie.titulo.toLowerCase().includes(nombre);
     const coincideCategoria =
       categoria === 'todas' ||
       categoria === 'vacio' ||

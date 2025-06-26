@@ -50,7 +50,7 @@ function filtrarPeliculas() {
   const categoria = selectCategoria.value.toLowerCase();
 
   const filtradas = peliculas.filter(function (pelicula) {
-    const coincideNombre = pelicula.titulo.toLowerCase().startsWith(nombre);
+    const coincideNombre = pelicula.titulo.toLowerCase().includes(nombre);
     const coincideCategoria =
       categoria === 'todas' ||
       categoria === 'vacio' ||

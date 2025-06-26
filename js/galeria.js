@@ -67,7 +67,7 @@ function filtrarContenido() {
   const categoria = selectCategoria.value.toLowerCase();
 
   const filtrados = contenido.filter(function (item) {
-    const coincideNombre = item.titulo.toLowerCase().startsWith(nombre);
+    const coincideNombre = item.titulo.toLowerCase().includes(nombre);
     const coincideCategoria =
       categoria === 'todas' || categoria === 'vacio' || item.genero.some(function (g) {
         return g.toLowerCase() === categoria;

@@ -231,11 +231,9 @@ const indiceUsuario = usuarios.findIndex(u => u.email === usuarioActivo.email);
 let favoritos = usuarios[indiceUsuario].favoritos || [];
 let suscripciones = usuarios[indiceUsuario].suscripciones || [];
 
-const contenedorPeliculas = document.getElementById('contenedorFavoritosPeliculas');
-const contenedorSeries = document.getElementById('contenedorFavoritosSeries');
+const contenedorFavoritos = document.getElementById('contenedorFavoritos');
 
-let hayPeliculas = false;
-let haySeries = false;
+let hayFavoritos = false;
 
 // FAVORITOS
 for (let favorito of favoritos) {
@@ -268,11 +266,8 @@ for (let favorito of favoritos) {
 
     divInfoCarrusel.remove();
 
-    if (favorito.tipo === "pelicula" && contenedorPeliculas.children.length === 0) {
-      contenedorPeliculas.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
-    }
-    if (favorito.tipo === "serie" && contenedorSeries.children.length === 0) {
-      contenedorSeries.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
+    if ((favorito.tipo === "pelicula" || favorito.tipo === "serie") && contenedorFavoritos.children.length === 0) {
+      contenedorFavoritos.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
     }
   });
 
@@ -282,28 +277,20 @@ for (let favorito of favoritos) {
   fotoCarrusel.appendChild(divCorazon);
   divInfoCarrusel.appendChild(fotoCarrusel);
 
-  if (favorito.tipo === "pelicula") {
-    contenedorPeliculas.appendChild(divInfoCarrusel);
-    hayPeliculas = true;
-  } else if (favorito.tipo === "serie") {
-    contenedorSeries.appendChild(divInfoCarrusel);
-    haySeries = true;
+  if (favorito.tipo === "pelicula" || favorito.tipo === "serie") {
+    contenedorFavoritos.appendChild(divInfoCarrusel);
+    hayFavoritos = true;
   }
 }
 
-if (!hayPeliculas) {
-  contenedorPeliculas.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
-}
-if (!haySeries) {
-  contenedorSeries.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
+if (!hayFavoritos) {
+  contenedorFavoritos.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
 }
 
 // SUSCRIPCIONES
-const contenedorSuscripcionesPeliculas = document.getElementById("contenedorSuscripcionesPeliculas");
-const contenedorSuscripcionesSeries = document.getElementById("contenedorSuscripcionesSeries");
+const contenedorProximosLanzamientos = document.getElementById("contenedorProximosLanzamientos");
 
-let hayPeliculasSus = false;
-let haySeriesSus = false;
+let hayProximosLanzamientos = false;
 
 for (let suscripto of suscripciones) {
   let divInfoCarrusel = document.createElement("div");
@@ -335,11 +322,8 @@ for (let suscripto of suscripciones) {
 
     divInfoCarrusel.remove();
 
-    if (suscripto.tipo === "pelicula" && contenedorSuscripcionesPeliculas.children.length === 0) {
-      contenedorSuscripcionesPeliculas.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
-    }
-    if (suscripto.tipo === "serie" && contenedorSuscripcionesSeries.children.length === 0) {
-      contenedorSuscripcionesSeries.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
+    if ((suscripto.tipo === "pelicula" || suscripto.tipo === "serie") && contenedorProximosLanzamientos.children.length === 0) {
+      contenedorProximosLanzamientos.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
     }
   });
 
@@ -349,18 +333,12 @@ for (let suscripto of suscripciones) {
   fotoCarrusel.appendChild(divCampana);
   divInfoCarrusel.appendChild(fotoCarrusel);
 
-  if (suscripto.tipo === "pelicula") {
-    contenedorSuscripcionesPeliculas.appendChild(divInfoCarrusel);
-    hayPeliculasSus = true;
-  } else if (suscripto.tipo === "serie") {
-    contenedorSuscripcionesSeries.appendChild(divInfoCarrusel);
-    haySeriesSus = true;
+  if (suscripto.tipo === "pelicula" || suscripto.tipo === "serie") {
+    contenedorProximosLanzamientos.appendChild(divInfoCarrusel);
+    hayProximosLanzamientos = true;
   }
 }
 
-if (!hayPeliculasSus) {
-  contenedorSuscripcionesPeliculas.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
-}
-if (!haySeriesSus) {
-  contenedorSuscripcionesSeries.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
+if (!hayProximosLanzamientos) {
+  contenedorProximosLanzamientos.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
 }
