@@ -93,9 +93,14 @@ document.addEventListener("DOMContentLoaded", () => {
   function validarCupon() {
     errorCupon.textContent = "";
     const algunoSeleccionado = Array.from(checkboxesCupon).some(chk => chk.checked);
-    if (!algunoSeleccionado) {
-      errorCupon.textContent = "Debe seleccionar al menos una opción de cupón.";
-    }
+    /*
+    *if (!algunoSeleccionado) {
+    * errorCupon.textContent = "Debe seleccionar al menos una opción de cupón.";
+    * Este código tira error cuando el usuario clickea cupón de pago sin antes elegir
+    * por RapiPago o PagoFacil y la verdad es que no hace falta porque sino elige 
+    * una checkbox no se le habilita el botón confirmar ya con eso se sabe que tiene que 
+    * elegir una opción.
+    */
     return algunoSeleccionado;
   }
 
