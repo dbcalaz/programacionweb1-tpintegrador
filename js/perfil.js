@@ -123,6 +123,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function limpiarCamposTarjeta() {
+    inputTarjeta.value = "";
+    inputClave.value = "";
+  }
+
   function validarFormulario() {
     errorContrasenia.textContent = "";
     let contraseniaValida = false;
@@ -145,11 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //Acá válida que los campos de número de tarjeta y clave no estén vacíos para que se puede habilitar el botón de guardar cambios.
     if (radioTarjeta.checked) {
-      const num = inputTarjeta.value.trim().replace(/\s+/g, "");
-      const clave = inputClave.value.trim();
-      if (num !== "" && clave !== "") {
-        metodoValido = validarTarjetaYClave();
-      }
+      metodoValido = validarTarjetaYClave();
     } else if (radioCupon.checked) {
       metodoValido = validarCupon();
     } else if (radioTransferencia.checked) {
@@ -168,9 +169,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   radioTransferencia.addEventListener("change", () => {
     limpiarCheckboxesCupon();
+    limpiarCamposTarjeta();
     validarFormulario();
   });
-  radioCupon.addEventListener("change", validarFormulario);
+  radioCupon.addEventListener("change", () => {
+    validarFormulario()
+    limpiarCamposTarjeta();
+  });
+
   inputTarjeta.addEventListener("input", validarFormulario);
   inputClave.addEventListener("input", validarFormulario);
   checkboxesCupon.forEach((chk) =>

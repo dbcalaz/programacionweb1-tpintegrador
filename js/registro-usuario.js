@@ -99,9 +99,8 @@ function validarRepetirContrasenia(contrasenia1, contrasenia2) {
 }
 
 function validaNumeroDeTarjeta(numeroTarjeta) {
-  //Si es método que eligió no es tarjeta que me de siempre bien
   if (!esMetodoTarjetaSeleccionado()) {
-    return true;
+    return true; // Si no es tarjeta, siempre válido
   }
   const LARGO_TARJETA = 16;
   let x;
@@ -117,22 +116,17 @@ function validaNumeroDeTarjeta(numeroTarjeta) {
       return false;
     }
     let num = parseInt(x);
-
     sumatoria += num;
   }
-  if (sumatoria % 2 === 1) {
-    return true;
-  }
-  return false;
+
+  return sumatoria % 2 === 1;
 }
 
 function validarClaveTarjeta(claveTarjeta) {
-  //Si es método que eligió no es tarjeta que me de siempre bien
   if (!esMetodoTarjetaSeleccionado()) {
-    return true;
+    return true; // Si no es tarjeta, siempre válido
   }
   const LARGO_CLAVE = 3;
-
   if (claveTarjeta.length !== LARGO_CLAVE || claveTarjeta.includes("0")) {
     return false;
   }
@@ -140,10 +134,7 @@ function validarClaveTarjeta(claveTarjeta) {
 }
 
 function esMetodoTarjetaSeleccionado() {
-  if (radioTarjeta.checked) {
-    return true;
-  }
-  return false;
+  return radioTarjeta.checked;
 }
 
 function actualizarEstadoCamposTarjeta() {
@@ -350,18 +341,18 @@ metodoPagoRadios.forEach((radio) => {
   });
 });
 
-checkPagoFacil.addEventListener("change", (evento) =>{
-  if(checkPagoFacil.checked){
+checkPagoFacil.addEventListener("change", (evento) => {
+  if (checkPagoFacil.checked) {
     checkRapiPago.disabled = true;
-  }else{
+  } else {
     checkRapiPago.disabled = false;
   }
 });
 
-checkRapiPago.addEventListener("change", (evento) =>{
-  if(checkRapiPago.checked){
+checkRapiPago.addEventListener("change", (evento) => {
+  if (checkRapiPago.checked) {
     checkPagoFacil.disabled = true;
-  }else{
+  } else {
     checkPagoFacil.disabled = false;
   }
 });
