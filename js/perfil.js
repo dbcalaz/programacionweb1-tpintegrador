@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (radioCupon.checked) {
       const seleccionados = Array.from(checkboxesCupon)
         .filter((chk) => chk.checked)
-        .map((chk) => chk.parentElement.textContent.trim());
+        .map((chk) => chk.value);
       usuarioActivo.metodoPago = {
         tipo: "cupon",
         seleccionados,
@@ -255,42 +255,40 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.removeItem("usuarioActivo");
   });
 
-  if (usuarioActivo && usuarioActivo.metodoPago) {
-    const metodo = usuarioActivo.metodoPago.tipo;
+  if (usuarioActivo && usuarioActivo.medioDePago) {
+    const medio = usuarioActivo.medioDePago;
 
-    if (metodo === "tarjeta") {
+    if (medio.tarjeta?.seleccionado) {
       radioTarjeta.checked = true;
-      inputTarjeta.value = usuarioActivo.metodoPago.numero || "";
-      inputClave.value = usuarioActivo.metodoPago.clave || "";
-    } else if (metodo === "cupon") {
+      inputTarjeta.value = medio.tarjeta.numero || "";
+      inputClave.value = medio.tarjeta.clave || "";
+    }
+
+    if (medio.cupon?.seleccionado) {
       radioCupon.checked = true;
-      const seleccionados = usuarioActivo.metodoPago.seleccionados || [];
 
-      checkboxesCupon.forEach((chk) => {
-        if (
-          chk.value &&
-          seleccionados.some(
-            (sel) => sel.toLowerCase() === chk.value.toLowerCase()
-          )
-        ) {
-          chk.checked = true;
-        }
-        // const texto = chk.parentElement.textContent.trim().toLowerCase();
-        // if (seleccionados.some((sel) => sel.toLowerCase() === texto)) {
-        //   chk.checked = true;
-        // }
-      });
-
-      // Esto deshabilita el otro checkbox si hay uno solo
-      if (seleccionados.length === 1) {
+      if (medio.cupon.pagoFacil) {
         checkboxesCupon.forEach((chk) => {
-          const texto = chk.parentElement.textContent.trim().toLowerCase();
-          chk.disabled = !seleccionados.some(
-            (sel) => sel.toLowerCase() === texto
-          );
+          if (chk.value === "pagoFacil") {
+            chk.checked = true;
+          } else {
+            chk.disabled = true;
+          }
         });
       }
-    } else if (metodo === "transferencia") {
+
+      if (medio.cupon.rapiPago) {
+        checkboxesCupon.forEach((chk) => {
+          if (chk.value === "rapiPago") {
+            chk.checked = true;
+          } else {
+            chk.disabled = true;
+          }
+        });
+      }
+    }
+
+    if (medio.transferencia?.seleccionado) {
       radioTransferencia.checked = true;
     }
   }
