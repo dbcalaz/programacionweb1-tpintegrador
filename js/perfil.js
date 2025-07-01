@@ -193,23 +193,59 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (radioTarjeta.checked) {
-      usuarioActivo.metodoPago = {
-        tipo: "tarjeta",
-        numero: inputTarjeta.value.trim().replace(/\s+/g, ""),
-        clave: inputClave.value.trim(),
+      usuarioActivo.medioDePago = {
+        tarjeta: {
+          seleccionado: true,
+          numero: inputTarjeta.value.trim().replace(/\s+/g, ""),
+          clave: inputClave.value.trim(),
+        },
+        cupon: {
+          seleccionado: false,
+          pagoFacil: false,
+          rapiPago: false,
+        },
+        transferencia: {
+          seleccionado: false,
+        },
       };
     } else if (radioCupon.checked) {
-      const seleccionados = Array.from(checkboxesCupon)
-        .filter((chk) => chk.checked)
-        .map((chk) => chk.value);
-      usuarioActivo.metodoPago = {
-        tipo: "cupon",
-        seleccionados,
+      const pagoFacil = document.querySelector(
+        'input[value="pagoFacil"]'
+      ).checked;
+      const rapiPago = document.querySelector(
+        'input[value="rapiPago"]'
+      ).checked;
+
+      usuarioActivo.medioDePago = {
+        tarjeta: {
+          seleccionado: false,
+          numero: "",
+          clave: "",
+        },
+        cupon: {
+          seleccionado: true,
+          pagoFacil,
+          rapiPago,
+        },
+        transferencia: {
+          seleccionado: false,
+        },
       };
     } else if (radioTransferencia.checked) {
-      usuarioActivo.metodoPago = {
-        tipo: "transferencia",
-        cbu: "2183909411100018971375",
+      usuarioActivo.medioDePago = {
+        tarjeta: {
+          seleccionado: false,
+          numero: "",
+          clave: "",
+        },
+        cupon: {
+          seleccionado: false,
+          pagoFacil: false,
+          rapiPago: false,
+        },
+        transferencia: {
+          seleccionado: true,
+        },
       };
     }
 
