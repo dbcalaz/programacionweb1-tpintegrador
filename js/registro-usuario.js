@@ -106,7 +106,7 @@ function validaNumeroDeTarjeta(numeroTarjeta) {
   const LARGO_TARJETA = 16;
   let x;
   let sumatoria = 0;
- 
+
   if (numeroTarjeta.length !== LARGO_TARJETA) {
     return false;
   }
@@ -132,7 +132,7 @@ function validarClaveTarjeta(claveTarjeta) {
     return true;
   }
   const LARGO_CLAVE = 3;
-  
+
   if (claveTarjeta.length !== LARGO_CLAVE || claveTarjeta.includes("0")) {
     return false;
   }
@@ -242,7 +242,7 @@ function verificarTodosLosCampos(evento) {
 
   if (!invalido) {
     let usuariosStorage = JSON.parse(localStorage.getItem("usuarios"));
-   
+
     let encontrado = false;
     usuariosStorage?.forEach((u) => {
       if (u.nombreDeUsuario === nombreDeUsuario.value) {
@@ -350,6 +350,22 @@ metodoPagoRadios.forEach((radio) => {
   });
 });
 
+checkPagoFacil.addEventListener("change", (evento) =>{
+  if(checkPagoFacil.checked){
+    checkRapiPago.disabled = true;
+  }else{
+    checkRapiPago.disabled = false;
+  }
+});
+
+checkRapiPago.addEventListener("change", (evento) =>{
+  if(checkRapiPago.checked){
+    checkPagoFacil.disabled = true;
+  }else{
+    checkPagoFacil.disabled = false;
+  }
+});
+
 function guardarDatosEnLocalStorage() {
   let usuariosStorage = JSON.parse(localStorage.getItem("usuarios"));
   let usuarios = [];
@@ -382,5 +398,4 @@ function guardarDatosEnLocalStorage() {
   localStorage.setItem("usuarios", JSON.stringify(usuarios));
 
   window.location.replace("./index.html");
-
 }

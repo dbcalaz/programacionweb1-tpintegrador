@@ -14,7 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const inputTarjeta = document.getElementById("numeroTarjeta");
   const inputClave = document.getElementById("claveTarjeta");
-  const checkboxesCupon = document.querySelectorAll(".opcion-checkbox input[type='checkbox']");
+  const checkboxesCupon = document.querySelectorAll(
+    ".opcion-checkbox input[type='checkbox']"
+  );
 
   const errorContrasenia = document.getElementById("errorContrasenia");
   const errorTarjeta = document.getElementById("errorTarjeta");
@@ -30,13 +32,15 @@ document.addEventListener("DOMContentLoaded", () => {
     contrasenia.value = usuarioActivo.contrasenia;
     radioTarjeta.checked = usuarioActivo.medioDePago?.tarjeta.seleccionado;
     radioCupon.checked = usuarioActivo.medioDePago?.cupon.seleccionado;
-    radioTransferencia.checked = usuarioActivo.medioDePago?.transferencia.seleccionado;
+    radioTransferencia.checked =
+      usuarioActivo.medioDePago?.transferencia.seleccionado;
     inputTarjeta.value = usuarioActivo.medioDePago?.tarjeta.numero;
     inputClave.value = usuarioActivo.medioDePago?.tarjeta.clave;
   }
 
   function validarContrasenia(valor) {
-    const validacionContrasenia = /^(?=(?:.*[a-zA-Z]){2,})(?=(?:.*\d){2,})(?=(?:.*[^a-zA-Z0-9]){2,}).{8,}$/;
+    const validacionContrasenia =
+      /^(?=(?:.*[a-zA-Z]){2,})(?=(?:.*\d){2,})(?=(?:.*[^a-zA-Z0-9]){2,}).{8,}$/;
     return validacionContrasenia.test(valor);
   }
 
@@ -63,8 +67,10 @@ document.addEventListener("DOMContentLoaded", () => {
       suma += parseInt(numeroTarjetaDeCredito[i]);
     }
 
-    return (suma % 2 === 0 && ultimoDigito % 2 === 1) ||
-      (suma % 2 === 1 && ultimoDigito % 2 === 0);
+    return (
+      (suma % 2 === 0 && ultimoDigito % 2 === 1) ||
+      (suma % 2 === 1 && ultimoDigito % 2 === 0)
+    );
   }
 
   function validarTarjetaYClave() {
@@ -77,31 +83,44 @@ document.addEventListener("DOMContentLoaded", () => {
     let tarjetaValida = true;
     let claveValida = true;
 
-    if (!validarNumeroTarjeta(num)) {
-      errorTarjeta.textContent = "La tarjeta no cumple con la regla de validación o no tiene 16 dígitos.";
+    if (num.length > 0 && !validarNumeroTarjeta(num)) {
+      errorTarjeta.textContent =
+        "La tarjeta no cumple con la regla de validación o no tiene 16 dígitos.";
       tarjetaValida = false;
     }
 
-    if (!validarClaveTarjetaCredito(clave)) {
-      errorClave.textContent = "La clave debe tener 3 dígitos distintos de cero.";
+    if (clave.length > 0 && !validarClaveTarjetaCredito(clave)) {
+      errorClave.textContent =
+        "La clave debe tener 3 dígitos distintos de cero.";
       claveValida = false;
     }
 
-    return tarjetaValida && claveValida;
+    return (
+      (num.length === 0 && clave.length === 0) || (tarjetaValida && claveValida)
+    );
   }
 
   function validarCupon() {
     errorCupon.textContent = "";
-    const algunoSeleccionado = Array.from(checkboxesCupon).some(chk => chk.checked);
+    const algunoSeleccionado = Array.from(checkboxesCupon).some(
+      (chk) => chk.checked
+    );
     /*
-    *if (!algunoSeleccionado) {
-    * errorCupon.textContent = "Debe seleccionar al menos una opción de cupón.";
-    * Este código tira error cuando el usuario clickea cupón de pago sin antes elegir
-    * por RapiPago o PagoFacil y la verdad es que no hace falta porque sino elige 
-    * una checkbox no se le habilita el botón confirmar ya con eso se sabe que tiene que 
-    * elegir una opción.
-    */
+     *if (!algunoSeleccionado) {
+     * errorCupon.textContent = "Debe seleccionar al menos una opción de cupón.";
+     * Este código tira error cuando el usuario clickea cupón de pago sin antes elegir
+     * por RapiPago o PagoFacil y la verdad es que no hace falta porque sino elige
+     * una checkbox no se le habilita el botón confirmar ya con eso se sabe que tiene que
+     * elegir una opción.
+     */
     return algunoSeleccionado;
+  }
+
+  function limpiarCheckboxesCupon() {
+    checkboxesCupon.forEach((check) => {
+      check.checked = false;
+      check.disabled = false;
+    });
   }
 
   function validarFormulario() {
@@ -115,7 +134,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!validarRepetirContrasenia(nueva, repetir)) {
         errorContrasenia.textContent = "Las contraseñas no coinciden.";
       } else if (!validarContrasenia(nueva)) {
-        errorContrasenia.textContent = "Mín. 8 caracteres: 2 letras, 2 números y 2 símbolos";
+        errorContrasenia.textContent =
+          "Mín. 8 caracteres: 2 letras, 2 números y 2 símbolos";
       } else {
         contraseniaValida = true;
       }
@@ -123,8 +143,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let metodoValido = false;
 
+    //Acá válida que los campos de número de tarjeta y clave no estén vacíos para que se puede habilitar el botón de guardar cambios.
     if (radioTarjeta.checked) {
-      metodoValido = validarTarjetaYClave();
+      const num = inputTarjeta.value.trim().replace(/\s+/g, "");
+      const clave = inputClave.value.trim();
+      if (num !== "" && clave !== "") {
+        metodoValido = validarTarjetaYClave();
+      }
     } else if (radioCupon.checked) {
       metodoValido = validarCupon();
     } else if (radioTransferencia.checked) {
@@ -134,24 +159,36 @@ document.addEventListener("DOMContentLoaded", () => {
     botonGuardar.disabled = !(contraseniaValida || metodoValido);
   }
 
-  
   inputNueva.addEventListener("input", validarFormulario);
   inputRepetir.addEventListener("input", validarFormulario);
-  radioTarjeta.addEventListener("change", validarFormulario);
+  //El limpiarCheckboxesCupon(), limpia los campos elegidos, si los hubiese, al cambiar de opción de pago entre Tarjeta de cŕedito y transferencia
+  radioTarjeta.addEventListener("change", () => {
+    limpiarCheckboxesCupon();
+    validarFormulario();
+  });
+  radioTransferencia.addEventListener("change", () => {
+    limpiarCheckboxesCupon();
+    validarFormulario();
+  });
   radioCupon.addEventListener("change", validarFormulario);
-  radioTransferencia.addEventListener("change", validarFormulario);
   inputTarjeta.addEventListener("input", validarFormulario);
   inputClave.addEventListener("input", validarFormulario);
-  checkboxesCupon.forEach(chk => chk.addEventListener("change", validarFormulario));
+  checkboxesCupon.forEach((chk) =>
+    chk.addEventListener("change", validarFormulario)
+  );
 
-  botonGuardar.addEventListener("click", e => {
+  botonGuardar.addEventListener("click", (e) => {
     e.preventDefault();
     if (botonGuardar.disabled) return;
 
     const nueva = inputNueva.value.trim();
     const repetir = inputRepetir.value.trim();
 
-    if (nueva && validarRepetirContrasenia(nueva, repetir) && validarContrasenia(nueva)) {
+    if (
+      nueva &&
+      validarRepetirContrasenia(nueva, repetir) &&
+      validarContrasenia(nueva)
+    ) {
       usuarioActivo.contrasenia = nueva;
     }
 
@@ -159,24 +196,24 @@ document.addEventListener("DOMContentLoaded", () => {
       usuarioActivo.metodoPago = {
         tipo: "tarjeta",
         numero: inputTarjeta.value.trim().replace(/\s+/g, ""),
-        clave: inputClave.value.trim()
+        clave: inputClave.value.trim(),
       };
     } else if (radioCupon.checked) {
       const seleccionados = Array.from(checkboxesCupon)
-        .filter(chk => chk.checked)
-        .map(chk => chk.parentElement.textContent.trim());
+        .filter((chk) => chk.checked)
+        .map((chk) => chk.parentElement.textContent.trim());
       usuarioActivo.metodoPago = {
         tipo: "cupon",
-        seleccionados
+        seleccionados,
       };
     } else if (radioTransferencia.checked) {
       usuarioActivo.metodoPago = {
         tipo: "transferencia",
-        cbu: "2183909411100018971375"
+        cbu: "2183909411100018971375",
       };
     }
 
-    const index = usuarios.findIndex(u => u.email === usuarioActivo.email);
+    const index = usuarios.findIndex((u) => u.email === usuarioActivo.email);
     if (index !== -1) {
       usuarios[index] = usuarioActivo;
       localStorage.setItem("usuarios", JSON.stringify(usuarios));
@@ -185,10 +222,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  botonCancelar.addEventListener("click", e => {
+  //esto se agregó
+  checkboxesCupon.forEach((check) => {
+    check.addEventListener("change", () => {
+      if (check.checked) {
+        checkboxesCupon.forEach((otroCheck) => {
+          if (otroCheck !== check) {
+            otroCheck.disabled = true;
+          }
+        });
+      } else {
+        checkboxesCupon.forEach((otroCheck) => {
+          otroCheck.disabled = false;
+        });
+      }
+    });
+  });
+
+  botonCancelar.addEventListener("click", (e) => {
     e.preventDefault();
     if (confirm("¿Estás seguro de que deseas cancelar la suscripción?")) {
-      usuarios = usuarios.filter(u => u.nombreDeUsuario !== usuarioActivo.nombreDeUsuario);
+      usuarios = usuarios.filter(
+        (u) => u.nombreDeUsuario !== usuarioActivo.nombreDeUsuario
+      );
       localStorage.setItem("usuarios", JSON.stringify(usuarios));
       localStorage.removeItem("usuarioActivo");
       window.location.href = "./index.html";
@@ -199,7 +255,6 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.removeItem("usuarioActivo");
   });
 
-  
   if (usuarioActivo && usuarioActivo.metodoPago) {
     const metodo = usuarioActivo.metodoPago.tipo;
 
@@ -210,12 +265,23 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (metodo === "cupon") {
       radioCupon.checked = true;
       const seleccionados = usuarioActivo.metodoPago.seleccionados || [];
-      checkboxesCupon.forEach(chk => {
-        const texto = chk.parentElement.textContent.trim();
-        if (seleccionados.includes(texto)) {
+
+      checkboxesCupon.forEach((chk) => {
+        const texto = chk.parentElement.textContent.trim().toLowerCase();
+        if (seleccionados.some((sel) => sel.toLowerCase() === texto)) {
           chk.checked = true;
         }
       });
+
+      // Esto deshabilita el otro checkbox si hay uno solo
+      if (seleccionados.length === 1) {
+        checkboxesCupon.forEach((chk) => {
+          const texto = chk.parentElement.textContent.trim().toLowerCase();
+          chk.disabled = !seleccionados.some(
+            (sel) => sel.toLowerCase() === texto
+          );
+        });
+      }
     } else if (metodo === "transferencia") {
       radioTransferencia.checked = true;
     }
@@ -232,11 +298,13 @@ if (!usuarioActivo) {
   window.location.href = "index.html";
 }
 
-const indiceUsuario = usuarios.findIndex(u => u.email === usuarioActivo.email);
+const indiceUsuario = usuarios.findIndex(
+  (u) => u.email === usuarioActivo.email
+);
 let favoritos = usuarios[indiceUsuario].favoritos || [];
 let suscripciones = usuarios[indiceUsuario].suscripciones || [];
 
-const contenedorFavoritos = document.getElementById('contenedorFavoritos');
+const contenedorFavoritos = document.getElementById("contenedorFavoritos");
 
 let hayFavoritos = false;
 
@@ -263,16 +331,25 @@ for (let favorito of favoritos) {
   imgCorazon.alt = "corazon";
 
   imgCorazon.addEventListener("click", function () {
-    favoritos = favoritos.filter(fav => !(fav.id === favorito.id && fav.tipo === favorito.tipo));
+    favoritos = favoritos.filter(
+      (fav) => !(fav.id === favorito.id && fav.tipo === favorito.tipo)
+    );
 
     usuarios[indiceUsuario].favoritos = favoritos;
     localStorage.setItem("usuarios", JSON.stringify(usuarios));
-    localStorage.setItem("usuarioActivo", JSON.stringify(usuarios[indiceUsuario]));
+    localStorage.setItem(
+      "usuarioActivo",
+      JSON.stringify(usuarios[indiceUsuario])
+    );
 
     divInfoCarrusel.remove();
 
-    if ((favorito.tipo === "pelicula" || favorito.tipo === "serie") && contenedorFavoritos.children.length === 0) {
-      contenedorFavoritos.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
+    if (
+      (favorito.tipo === "pelicula" || favorito.tipo === "serie") &&
+      contenedorFavoritos.children.length === 0
+    ) {
+      contenedorFavoritos.innerHTML =
+        '<p class="mensaje-error">No se encontraron resultados.</p>';
     }
   });
 
@@ -289,11 +366,14 @@ for (let favorito of favoritos) {
 }
 
 if (!hayFavoritos) {
-  contenedorFavoritos.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
+  contenedorFavoritos.innerHTML =
+    '<p class="mensaje-error">No se encontraron resultados.</p>';
 }
 
 // SUSCRIPCIONES
-const contenedorProximosLanzamientos = document.getElementById("contenedorProximosLanzamientos");
+const contenedorProximosLanzamientos = document.getElementById(
+  "contenedorProximosLanzamientos"
+);
 
 let hayProximosLanzamientos = false;
 
@@ -319,16 +399,25 @@ for (let suscripto of suscripciones) {
   imgCampana.alt = "Desuscribirse";
 
   imgCampana.addEventListener("click", function () {
-    suscripciones = suscripciones.filter(sub => !(sub.id === suscripto.id && sub.tipo === suscripto.tipo));
+    suscripciones = suscripciones.filter(
+      (sub) => !(sub.id === suscripto.id && sub.tipo === suscripto.tipo)
+    );
 
     usuarios[indiceUsuario].suscripciones = suscripciones;
     localStorage.setItem("usuarios", JSON.stringify(usuarios));
-    localStorage.setItem("usuarioActivo", JSON.stringify(usuarios[indiceUsuario]));
+    localStorage.setItem(
+      "usuarioActivo",
+      JSON.stringify(usuarios[indiceUsuario])
+    );
 
     divInfoCarrusel.remove();
 
-    if ((suscripto.tipo === "pelicula" || suscripto.tipo === "serie") && contenedorProximosLanzamientos.children.length === 0) {
-      contenedorProximosLanzamientos.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
+    if (
+      (suscripto.tipo === "pelicula" || suscripto.tipo === "serie") &&
+      contenedorProximosLanzamientos.children.length === 0
+    ) {
+      contenedorProximosLanzamientos.innerHTML =
+        '<p class="mensaje-error">No se encontraron resultados.</p>';
     }
   });
 
@@ -345,5 +434,6 @@ for (let suscripto of suscripciones) {
 }
 
 if (!hayProximosLanzamientos) {
-  contenedorProximosLanzamientos.innerHTML = '<p class="mensaje-error">No se encontraron resultados.</p>';
+  contenedorProximosLanzamientos.innerHTML =
+    '<p class="mensaje-error">No se encontraron resultados.</p>';
 }
