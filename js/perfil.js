@@ -267,10 +267,18 @@ document.addEventListener("DOMContentLoaded", () => {
       const seleccionados = usuarioActivo.metodoPago.seleccionados || [];
 
       checkboxesCupon.forEach((chk) => {
-        const texto = chk.parentElement.textContent.trim().toLowerCase();
-        if (seleccionados.some((sel) => sel.toLowerCase() === texto)) {
+        if (
+          chk.value &&
+          seleccionados.some(
+            (sel) => sel.toLowerCase() === chk.value.toLowerCase()
+          )
+        ) {
           chk.checked = true;
         }
+        // const texto = chk.parentElement.textContent.trim().toLowerCase();
+        // if (seleccionados.some((sel) => sel.toLowerCase() === texto)) {
+        //   chk.checked = true;
+        // }
       });
 
       // Esto deshabilita el otro checkbox si hay uno solo
